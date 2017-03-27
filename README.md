@@ -48,7 +48,7 @@ Shaoran: Es el ni�o que sale en la serie y la ayuda, cuando el aparezca en el 
 * caracteristica3
 
 ### Diagrama de clases
-![Diagrama de clases](url-del-diagrama.png)
+![Diagrama de clases](https://github.com/acominf/GameOfSakura/blob/29cee4cc6b1654d803eeab7eb2123755e22fa3e9/imagenes/Game%20of%20Sakura%20Card%20Captor-1.jpg)
 
 ### Autor(es)
 El autor(es) del proyecto son:
