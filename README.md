@@ -8,30 +8,34 @@ El juego consta de X niveles y habrá una carta en cada nivel.
 
 Durante su camino se puede encontrar con algunos de sus amigos u objetos los cuales le pueden dar poderes especiales para poder derrotar a las cartas Clow.
 
-* Enemigos *
+**Enemigos**
+
 _The watery:_ Es la carta del agua. 
 _The Windy:_ Es la carta del Viento.
-* Items *
+
+**Items**
+
 _The Jump:_ Es la carta del salto, un pequeño ítem de  que te ayudará para avanzar más rápido. 
 _The Flower:_ Esta carta es la carta de las flores, y este es un item que recupera la vida.
-* Amigos *
+
+**Amigos**
+
 _ Shaoran _
 
 
 ### Clases principales y sus características
-1. Clase 1
-* caracteristica1
-* caracteristica2
-* caracteristica3
+1. Persona
+* Edad
 
-2. Clase 2
-* caracteristica1
-* caracteristica2
-* caracteristica3
+2. Sakura
+* Vidas
+* Item
+* Poder
+* CartasVencidas
 
-3. Clase 3
-* caracteristica1
-* caracteristica2
+3. Cartas
+* Actitud
+* Poder
 * caracteristica3
 
 4. Clase 4
