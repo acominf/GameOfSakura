@@ -1,5 +1,7 @@
 package com.sakuraxx.game;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.sakuraxx.game.MyGdxGame;
 
@@ -21,6 +23,7 @@ public class Boton extends MyGdxGame{
     }
 
     void presionar(boolean push){
+        Gdx.input.isCursorCatched();
         if(push){
             // abre otra pantalla para realizar lo deseado.
             // o se puede limpiar pantalla y poner lo que se realizara
