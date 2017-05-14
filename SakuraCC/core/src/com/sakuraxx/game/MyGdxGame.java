@@ -12,7 +12,7 @@ public class MyGdxGame extends ApplicationAdapter {
 	private Texture img;
 	private BitmapFont font;
 	private int height, width;
-	
+	private Sakura personaje; // sakura1
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
@@ -24,12 +24,15 @@ public class MyGdxGame extends ApplicationAdapter {
 
 	@Override
 	public void render () {
-		Gdx.gl.glClearColor(0.2f, 0.5f, 0.5f, 1);
+		Gdx.gl.glClearColor(0.2f, 0.5f, 0.5f, 0.4f);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
+		//personaje.create();
+		batch.draw(img, 0, 0, width, height);
+		//batch.draw(img, 0,0);
+		//batch.draw(img, 10 , 50);
 		font.draw(batch, "Sakura Card Captor Game", 10, height - 10);
 		font.draw(batch, "Holi", 10, 100, 1, 2, true);
-		batch.draw(img, 0, 0, width, height);
 		batch.end();
 	}
 	
