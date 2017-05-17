@@ -5,7 +5,7 @@ import com.badlogic.gdx.Gdx;
 /**
  * Created by mendezrodriguez on 12/05/17.
  */
-public abstract class Persona extends MyGdxGame{
+public abstract class Persona extends MyGdxGame {
     private int x;
     private int y;
     private int Inc = 10;
@@ -27,7 +27,7 @@ public abstract class Persona extends MyGdxGame{
     }
     public void goRight() {
         if(x <= width-170){
-            x += Velocidad();
+            x += Inc;//Velocidad();
             System.out.println("Ancho = "+width+ " x =" + x);
         }
     }
@@ -35,6 +35,11 @@ public abstract class Persona extends MyGdxGame{
     public int getY() {
         return y;
     }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
     public void goLeft() {
         if(x >= 0){
             x -= Inc;
@@ -42,13 +47,12 @@ public abstract class Persona extends MyGdxGame{
         }
     }
 
-    public void jump(){
+    public boolean jump(){
+        boolean salto = true;
         if(y < Gdx.graphics.getHeight()) {
-            for (int i = 0; i < Inc; i++) {
-                System.out.println(y);
-                y += 1;
-            }
-            System.out.println(y);
+            y += Inc;
+            salto = true;
         }
+        return salto;
     }
 }

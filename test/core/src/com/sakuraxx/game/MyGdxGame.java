@@ -17,7 +17,7 @@ public class MyGdxGame extends ApplicationAdapter {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		img = new Texture(Gdx.files.internal("android/assets/SAKURA.jpg"));
+		img = new Texture(Gdx.files.internal("core/assets/SAKURA.jpg"));
 		font = new BitmapFont();
 		height = Gdx.graphics.getHeight();
 		width = Gdx.graphics.getWidth();

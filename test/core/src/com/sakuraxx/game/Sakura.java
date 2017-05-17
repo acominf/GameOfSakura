@@ -24,7 +24,7 @@ public class Sakura extends Persona {
     @Override
     public void create(){
         // imagen de Sakura
-        sakura = new Texture(Gdx.files.internal("android/assets/sakura-1.png"));
+        sakura = new Texture(Gdx.files.internal("core/assets/sakura-1.png"));
         img = new Sprite(sakura, 130, 0, 165, 300);
         img.setPosition(super.getX(),super.getY());
     }
@@ -40,6 +40,7 @@ public class Sakura extends Persona {
     }
     @Override
     public void mover(){
+        boolean bandera = false;
         if(input.isKeyPressed(Input.Keys.A)){
             super.goLeft();
         }
@@ -47,8 +48,10 @@ public class Sakura extends Persona {
             super.goRight();
         }
         else if (input.isKeyPressed(Input.Keys.SPACE)){
-            super.jump();
-
+            bandera = super.jump();
+        }
+        if(bandera){
+            super.setY(super.getY()-1);
         }
 
         img.setPosition(super.getX(), super.getY());
