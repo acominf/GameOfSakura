@@ -5,7 +5,7 @@ import com.badlogic.gdx.Gdx;
 /**
  * Created by mendezrodriguez on 12/05/17.
  */
-public abstract class Persona extends MyGdxGame {
+/*public abstract class Persona extends MyGdxGame {
     private int x;
     private int y;
     private int Inc = 10;
@@ -55,4 +55,4 @@ public abstract class Persona extends MyGdxGame {
         }
         return salto;
     }
-}
+}*/

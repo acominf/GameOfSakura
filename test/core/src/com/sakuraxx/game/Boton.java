@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.Texture;
 /**
  * Created by mendezrodriguez on 11/05/17.
  */
-public class Boton extends MyGdxGame {
+/*public class Boton extends MyGdxGame {
     private int x;
     private int y;
     private Texture img;
@@ -31,4 +31,4 @@ public class Boton extends MyGdxGame {
 
 
 
-}
+}*/

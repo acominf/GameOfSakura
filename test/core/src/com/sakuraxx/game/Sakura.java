@@ -13,7 +13,7 @@ import static com.badlogic.gdx.Gdx.input;
  *          y Margarita Neftalí Méndez Rodríguez
  * Esta clase sera la que modulemos a el personaje de Sakura.
  */
-public class Sakura extends Persona {
+/*public class Sakura extends Persona {
     private Texture sakura;
     private Sprite img;
     private SpriteBatch batch;
@@ -62,4 +62,4 @@ public class Sakura extends Persona {
         super.dispose();
         sakura.dispose();
     }
-}
+}*/

@@ -6,26 +6,33 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import ventanas.Menu;
 
 public class MyGdxGame extends ApplicationAdapter {
+	// Tome este como un main :x pero el setVisible lo ignora bien chido xD asi que no se que onda xd
+	/*Menu m = new Menu();
+	m.setVisible(true);*/
+
+
 	private SpriteBatch batch;
 	private Texture img;
 	private BitmapFont font;
 	private int height, width;
-	private Sakura saku; // sakura1
-    private Persona personaje;
+	//private Sakura saku; // sakura1
+	private Principal menu;
+
 	@Override
 	public void create () {
-		batch = new SpriteBatch();
-		img = new Texture(Gdx.files.internal("core/assets/SAKURA.jpg"));
-		font = new BitmapFont();
-		height = Gdx.graphics.getHeight();
-		width = Gdx.graphics.getWidth();
-		System.out.println(width);
-		saku = new Sakura();
-		personaje = new Sakura();
-		saku.create();
-	}
+	batch = new SpriteBatch();
+	img = new Texture(Gdx.files.internal("core/assets/SAKURA.jpg"));
+	font = new BitmapFont();
+	height = Gdx.graphics.getHeight();
+	width = Gdx.graphics.getWidth();
+	System.out.println(width);
+	saku = new Sakura();
+	//personaje = new Sakura();
+	saku.create();
+}
 
 	@Override
 	public void render () {
@@ -39,8 +46,8 @@ public class MyGdxGame extends ApplicationAdapter {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         //personaje.mover();
         saku.mover();
-		font.draw(batch, "Sakura Card Captor Game", 10, height - 10);
-        font.draw(batch, "Holi", 60, 100, 2, 1, false);
+		//font.draw(batch, "Sakura Card Captor Game", 10, height - 10);
+        //font.draw(batch, "Holi", 60, 100, 2, 1, false);
         //super.pause();
         //font.dispose();
 
@@ -65,11 +72,11 @@ public class MyGdxGame extends ApplicationAdapter {
                     saku.jump();
                 }
             }
-            */
+
 	@Override
 	public void dispose () {
 		batch.dispose();
 		img.dispose();
 		font.dispose();
 	}
-}
+}*/
