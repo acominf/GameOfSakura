@@ -1,29 +1,31 @@
 package com.sakuraxx.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import ventanas.Menu;
 
-public class MyGdxGame extends ApplicationAdapter {
-	// Tome este como un main :x pero el setVisible lo ignora bien chido xD asi que no se que onda xd
-	/*Menu m = new Menu();
-	m.setVisible(true);*/
+public class MyGdxGame extends Game {//ApplicationAdapter {
+    private SpriteBatch batch;
 
-
-	private SpriteBatch batch;
+	/*
 	private Texture img;
 	private BitmapFont font;
 	private int height, width;
 	//private Sakura saku; // sakura1
-	private Principal menu;
+	private Principal menu;*/
 
 	@Override
-	public void create () {
-	batch = new SpriteBatch();
+	public void create() {
+        batch = new SpriteBatch();
+        Ventanas.juego = this;
+		Ventanas.GameScreen = new Screen(this);
+		Ventanas.Menu = new Menu(this);
+		setScreen(Ventanas.Menu);
+	/*
 	img = new Texture(Gdx.files.internal("core/assets/SAKURA.jpg"));
 	font = new BitmapFont();
 	height = Gdx.graphics.getHeight();
@@ -31,12 +33,24 @@ public class MyGdxGame extends ApplicationAdapter {
 	System.out.println(width);
 	saku = new Sakura();
 	//personaje = new Sakura();
-	saku.create();
-}
+	saku.create();*/
+	}
 
-	@Override
-	public void render () {
-		Gdx.gl.glClearColor(0.2f, 0.7f, 0.8f, 1);
+	@Override //metodo para eliminar recursos
+	public void dispose () {
+		batch.dispose();
+		Ventanas.GameScreen.dispose();
+		//img.dispose();
+		//font.dispose();
+	}
+
+	public SpriteBatch getBatch(){
+	    return batch;
+    }
+
+	//@Override
+	//public void render() {
+		/*Gdx.gl.glClearColor(0.2f, 0.7f, 0.8f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
 
@@ -51,12 +65,12 @@ public class MyGdxGame extends ApplicationAdapter {
         //super.pause();
         //font.dispose();
 
-        img.dispose();
+        img.dispose();*/
 
-		batch.end();
-	}
+		//batch.end();
+	//}
 
-    public int getHeight() {
+   /* public int getHeight() {
         return height;
     }
 
@@ -73,10 +87,5 @@ public class MyGdxGame extends ApplicationAdapter {
                 }
             }
 
-	@Override
-	public void dispose () {
-		batch.dispose();
-		img.dispose();
-		font.dispose();
-	}
-}*/
+	*/
+}
