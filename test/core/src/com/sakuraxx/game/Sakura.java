@@ -2,8 +2,11 @@ package com.sakuraxx.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.*;
 
 import static com.badlogic.gdx.Gdx.input;
 
@@ -13,20 +16,42 @@ import static com.badlogic.gdx.Gdx.input;
  *          y Margarita Neftalí Méndez Rodríguez
  * Esta clase sera la que modulemos a el personaje de Sakura.
  */
-/*public class Sakura extends Persona {
+public class Sakura extends Actor {
+
     private Texture sakura;
+    private TextureRegion img;
+
+    Sakura(){
+        sakura = new Texture(Gdx.files.internal("core/assets/sakura-1.png"));
+        img = new TextureRegion(sakura, 130, 0, 165, 300);
+    }
+
+    @Override
+    public void draw(Batch batch, float parentAlpha) {
+        batch.draw(img, getX(), getY(), getOriginX(), getOriginY(),
+                getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());
+
+    }
+
+    @Override
+    public void act(float delta) {
+        super.act(delta);
+   
+    }
+    /*private Texture sakura;
     private Sprite img;
     private SpriteBatch batch;
 
     public Sakura(){
         super(100,20);
+        sakura = new Texture(Gdx.files.internal("core/assets/sakura-1.png"));
+        img = new Sprite(sakura, 130, 0, 165, 300);
+        img.setPosition(super.getX(),super.getY());
     }
     @Override
     public void create(){
         // imagen de Sakura
-        sakura = new Texture(Gdx.files.internal("core/assets/sakura-1.png"));
-        img = new Sprite(sakura, 130, 0, 165, 300);
-        img.setPosition(super.getX(),super.getY());
+
     }
     public void render(){
         batch.begin();
@@ -61,5 +86,5 @@ import static com.badlogic.gdx.Gdx.input;
     public void dispose() {
         super.dispose();
         sakura.dispose();
-    }
-}*/
+    }*/
+}
