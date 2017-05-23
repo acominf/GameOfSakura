@@ -1,15 +1,15 @@
 package com.sakuraxx.game;
 
-import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
-public class MyGdxGame extends Game {//ApplicationAdapter {
-    private SpriteBatch batch;
+public class MyGdxGame extends Game {
+	public SpriteBatch batch;
+	public Ventana c;
+	public Ventana animacion;
+	public Ventana m;
 
 	/*
 	private Texture img;
@@ -20,11 +20,11 @@ public class MyGdxGame extends Game {//ApplicationAdapter {
 
 	@Override
 	public void create() {
-        batch = new SpriteBatch();
-        Ventanas.juego = this;
-		Ventanas.GameScreen = new Screen(this);
-		Ventanas.Menu = new Menu(this);
-		setScreen(Ventanas.Menu);
+	batch = new SpriteBatch();
+	c = new GameScreen(this);
+	animacion = new FondoAnimado(this);
+	m = new Menu(this);
+	setScreen(m);
 	/*
 	img = new Texture(Gdx.files.internal("core/assets/SAKURA.jpg"));
 	font = new BitmapFont();
@@ -36,20 +36,9 @@ public class MyGdxGame extends Game {//ApplicationAdapter {
 	saku.create();*/
 	}
 
-	@Override //metodo para eliminar recursos
-	public void dispose () {
-		batch.dispose();
-		Ventanas.GameScreen.dispose();
-		//img.dispose();
-		//font.dispose();
-	}
+	@Override
+	public void render() {
 
-	public SpriteBatch getBatch(){
-	    return batch;
-    }
-
-	//@Override
-	//public void render() {
 		/*Gdx.gl.glClearColor(0.2f, 0.7f, 0.8f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
@@ -67,8 +56,14 @@ public class MyGdxGame extends Game {//ApplicationAdapter {
 
         img.dispose();*/
 
-		//batch.end();
-	//}
+	//batch.end();
+	}
+	/*@Override //metodo para eliminar recursos
+	public void dispose () {
+
+		//img.dispose();
+		//font.dispose();
+	}*/
 
    /* public int getHeight() {
         return height;
