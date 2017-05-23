@@ -18,10 +18,10 @@ public class Menu extends Ventana {
     public Menu(MyGdxGame g) {
         super(g);
         stage = new Stage();
-        skin = new Skin(Gdx.files.internal("core/assets/uiskin.json"));
+        skin = new Skin(Gdx.files.internal("core/assets/skin/uiskin.json"));
 
         TextButton button = new TextButton("Jugar", skin);
-        button.setPosition(100,100);
+        button.setPosition(50,50);
         stage.addActor(button);
 
         Gdx.input.setInputProcessor(stage);
@@ -37,7 +37,7 @@ public class Menu extends Ventana {
 
     @Override
     public void render(float delta){
-        Gdx.gl.glClearColor(0.2f, 0.7f, 0.8f, 1);
+        Gdx.gl.glClearColor(0.5f, 0.5f, 0.5f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         stage.draw();

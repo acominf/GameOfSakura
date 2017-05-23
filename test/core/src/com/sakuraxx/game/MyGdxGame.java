@@ -1,6 +1,8 @@
 package com.sakuraxx.game;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
+//import com.badlogic.gdx.graphics;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -38,7 +40,9 @@ public class MyGdxGame extends Game {
 
 	@Override
 	public void render() {
-
+	    //m.render(new Gdx.graphics.ge);
+        float delta = Gdx.graphics.getDeltaTime();
+        m.render(delta);
 		/*Gdx.gl.glClearColor(0.2f, 0.7f, 0.8f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
