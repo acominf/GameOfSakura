@@ -3,15 +3,22 @@ package com.sakuraxx.game;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 //import com.badlogic.gdx.graphics;
+import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 public class MyGdxGame extends Game {
+
+	private AssetManager manager;
+
 	public SpriteBatch batch;
-	public Ventana c;
-	public Ventana animacion;
-	public Ventana m;
+	public Ventana gameScreen;
+	public Ventana menu;
+	public Ventana item;
+	public Ventana history;
+	//private CarImage asset;
 
 	/*
 	private Texture img;
@@ -22,11 +29,14 @@ public class MyGdxGame extends Game {
 
 	@Override
 	public void create() {
-	batch = new SpriteBatch();
-	c = new GameScreen(this);
-	animacion = new FondoAnimado(this);
-	m = new Menu(this);
-	setScreen(m);
+		menu = new Menu(this);
+		history = new HistoryScreen(this);
+		item = new ItemScreen(this);
+		//setScreen(menu);
+		batch = new SpriteBatch();
+
+	//animacion = new FondoAnimado(this);
+	setScreen(menu);
 	/*
 	img = new Texture(Gdx.files.internal("core/assets/SAKURA.jpg"));
 	font = new BitmapFont();
@@ -38,11 +48,21 @@ public class MyGdxGame extends Game {
 	saku.create();*/
 	}
 
-	@Override
+	/*public AssetManager getManager(){
+		return manager;*/
+
+	@Override //metodo para eliminar recursos
+	public void dispose () {
+		super.dispose();
+		batch.dispose();
+		//font.dispose();
+	}
+
+	/*@Override
 	public void render() {
 	    //m.render(new Gdx.graphics.ge);
         float delta = Gdx.graphics.getDeltaTime();
-        m.render(delta);
+        history.render(delta);
 		/*Gdx.gl.glClearColor(0.2f, 0.7f, 0.8f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
@@ -58,16 +78,11 @@ public class MyGdxGame extends Game {
         //super.pause();
         //font.dispose();
 
-        img.dispose();*/
+        img.dispose();
 
 	//batch.end();
 	}
-	/*@Override //metodo para eliminar recursos
-	public void dispose () {
-
-		//img.dispose();
-		//font.dispose();
-	}*/
+	*/
 
    /* public int getHeight() {
         return height;

@@ -9,8 +9,8 @@ public abstract class Ventana implements Screen {
 
     protected MyGdxGame game;
 
-    public Ventana(MyGdxGame g){
-        this.game = g;
+    public Ventana(MyGdxGame game){
+        this.game = game;
     }
 
     @Override
