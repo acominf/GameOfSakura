@@ -32,6 +32,7 @@ public class MyGdxGame extends Game {
 		menu = new Menu(this);
 		history = new HistoryScreen(this);
 		item = new ItemScreen(this);
+		gameScreen = new GameScreen(this);
 		//setScreen(menu);
 		batch = new SpriteBatch();
 
@@ -62,7 +63,7 @@ public class MyGdxGame extends Game {
 	public void render() {
 	    //m.render(new Gdx.graphics.ge);
         float delta = Gdx.graphics.getDeltaTime();
-        history.render(delta);
+        menu.render(delta);
 		/*Gdx.gl.glClearColor(0.2f, 0.7f, 0.8f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
@@ -80,9 +81,9 @@ public class MyGdxGame extends Game {
 
         img.dispose();
 
-	//batch.end();
+	//batch.end();*/
 	}
-	*/
+
 
    /* public int getHeight() {
         return height;
@@ -102,4 +103,4 @@ public class MyGdxGame extends Game {
             }
 
 	*/
-}
+//}
