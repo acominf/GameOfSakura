@@ -1,6 +1,7 @@
 package com.sakuraxx.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -20,16 +21,37 @@ public class Sakura extends Actor {
 
     private Texture sakura;
     private TextureRegion img;
+    private Sprite sprite;
 
     Sakura(){
         sakura = new Texture(Gdx.files.internal("core/assets/sakura-1.png"));
-        img = new TextureRegion(sakura, 130, 0, 165, 300);
+        img = new TextureRegion(sakura, 130,0,165, 300);
+        //setPosition(50, 50);
+        setSize(165, 300);
+        sprite = new Sprite(sakura, 130, 0, 165, 300);
+
+
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
         batch.draw(img, getX(), getY(), getOriginX(), getOriginY(),
                 getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());
+        /*batch.draw(img, getX(), getY(),getWidth(), getHeight());
+        batch.draw(img, 100,100, getWidth(), getHeight());*/
+        Color c = getColor();
+        batch.setColor(c.r, c.g, c.b, c.a * parentAlpha);
+        //batch.draw(img, getWidth(), getHeight());
+
+        /*sprite.draw(batch, parentAlpha);
+        //sprite.flip(true, false);
+        sprite.setScale(.5f, .5f);
+        //sprite.translate(.2f, 0);
+        //sprite.split(img);
+        sprite.isFlipX();
+        //sprite.
+*/
+
 
     }
 

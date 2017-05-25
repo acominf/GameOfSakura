@@ -4,6 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 //import com.badlogic.gdx.graphics;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -18,34 +19,39 @@ public class MyGdxGame extends Game {
 	public Ventana menu;
 	public Ventana item;
 	public Ventana history;
+
+	private Juego juego;
 	//private CarImage asset;
 
-	/*
-	private Texture img;
+
+	/*private Texture img;
 	private BitmapFont font;
 	private int height, width;
 	//private Sakura saku; // sakura1
 	private Principal menu;*/
+    private Sakura saku;
 
-	@Override
+    @Override
 	public void create() {
 		menu = new Menu(this);
 		history = new HistoryScreen(this);
 		item = new ItemScreen(this);
+        juego =new Juego(this);
 		//setScreen(menu);
 		batch = new SpriteBatch();
 
+
 	//animacion = new FondoAnimado(this);
 	setScreen(menu);
-	/*
-	img = new Texture(Gdx.files.internal("core/assets/SAKURA.jpg"));
+
+	/*img = new Texture(Gdx.files.internal("core/assets/SAKURA.jpg"));
 	font = new BitmapFont();
 	height = Gdx.graphics.getHeight();
 	width = Gdx.graphics.getWidth();
-	System.out.println(width);
-	saku = new Sakura();
+	System.out.println(width);*/
+	    saku = new Sakura();
 	//personaje = new Sakura();
-	saku.create();*/
+	   // saku.create();
 	}
 
 	/*public AssetManager getManager(){
@@ -58,9 +64,14 @@ public class MyGdxGame extends Game {
 		//font.dispose();
 	}
 
-	/*@Override
+	@Override
 	public void render() {
-	    //m.render(new Gdx.graphics.ge);
+	    float delta = Gdx.graphics.getDeltaTime();
+        juego.render(delta);
+
+
+	}
+	    /*//m.render(new Gdx.graphics.ge);
         float delta = Gdx.graphics.getDeltaTime();
         history.render(delta);
 		/*Gdx.gl.glClearColor(0.2f, 0.7f, 0.8f, 1);
