@@ -30,10 +30,10 @@ public class ItemScreen extends Ventana {
         skin = new Skin(Gdx.files.internal("core/assets/skin/uiskin.json"));
 
         batch = new SpriteBatch();
-        texture = new Texture(Gdx.files.internal("core/assets/cartas.jpg"));
+        texture = new Texture(Gdx.files.internal("core/assets/Items.jpg"));
 
         back = new TextButton("Regresar", skin);
-        back.setBounds(135,65,100,60);
+        back.setBounds(480,20,100,40);
         back.setColor(Color.MAGENTA);
         back.addCaptureListener(new ChangeListener() {
             @Override
