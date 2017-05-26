@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -19,7 +18,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 public class HistoryScreen extends Ventana {
 
     private SpriteBatch batch;
-    private Sprite sprite;
+    private Texture texture;
     private Stage stage;
     private TextButton back;
     private Skin skin;
@@ -29,6 +28,9 @@ public class HistoryScreen extends Ventana {
 
         stage = new Stage(new FitViewport(600,450));
         skin = new Skin(Gdx.files.internal("core/assets/skin/uiskin.json"));
+
+        batch = new SpriteBatch();
+        texture = new Texture(Gdx.files.internal("core/assets/historia.jpg"));
 
         back = new TextButton("Regresar", skin);
         back.setBounds(135,65,100,60);
@@ -41,11 +43,6 @@ public class HistoryScreen extends Ventana {
         });
 
         stage.addActor(back);
-
-        /*batch = new SpriteBatch();
-        sprite = new Sprite(new Texture(Gdx.files.internal("core/assets/Historia.jpg")));
-        sprite.setSize(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());*/
-
     }
 
     @Override
@@ -57,17 +54,16 @@ public class HistoryScreen extends Ventana {
     public void render(float delta){
         Gdx.gl.glClearColor(0.2f, 0.7f, 0.8f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        batch.begin();
+        batch.draw(texture,0,0,600,450);
+        batch.end();
+
         stage.act();
         stage.draw();
-
-        /*batch.begin();
-        sprite.draw(batch);
-        batch.end();*/
     }
+
     @Override
     public void hide(){
-        stage.dispose();
-        skin.dispose();
-       // batch.dispose();
     }
 }
