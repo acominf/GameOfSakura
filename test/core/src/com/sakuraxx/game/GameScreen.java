@@ -3,7 +3,6 @@ package com.sakuraxx.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 /**
@@ -12,17 +11,17 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class GameScreen extends Ventana {
 
     private SpriteBatch batch;
-    private Sprite sprite;
+    private Texture texture;
 
     public GameScreen(MyGdxGame game) {
         super(game);
+        batch = new SpriteBatch();
+        texture = new Texture(Gdx.files.internal("core/assets/nubes.jpg"));
     }
 
     @Override
-    public void show(){
-        batch = new SpriteBatch();
-        sprite = new Sprite(new Texture(Gdx.files.internal("core/assets/nubes.jpg")));
-        sprite.setSize(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+    public void show() {
+
     }
 
 
@@ -32,11 +31,12 @@ public class GameScreen extends Ventana {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         batch.begin();
-        sprite.draw(batch);
+        batch.draw(texture,0,0,600,450);
         batch.end();
     }
     @Override
-    public void hide(){
-        batch.dispose();
+    public void hide()
+    {
+
     }
 }
