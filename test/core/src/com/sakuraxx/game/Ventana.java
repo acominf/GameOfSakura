@@ -1,6 +1,7 @@
 package com.sakuraxx.game;
 
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.g2d.Batch;
 
 /**
  * Created by karen on 22/05/2017.
@@ -8,6 +9,7 @@ import com.badlogic.gdx.Screen;
 public abstract class Ventana implements Screen {
 
     protected MyGdxGame game;
+    public Batch batch;
 
     public Ventana(MyGdxGame game){
         this.game = game;

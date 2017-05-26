@@ -14,6 +14,8 @@ public class MyGdxGame extends Game {
 
 	private AssetManager manager;
 
+	public static final int V_WIDTH = 600;
+	public static final int V_HEIGHT = 400;
 	public SpriteBatch batch;
 	public Ventana gameScreen;
 	public Ventana menu;
@@ -33,12 +35,14 @@ public class MyGdxGame extends Game {
 
     @Override
 	public void create() {
+        batch = new SpriteBatch();
+        //setScreen(new Juego(this));
 		menu = new Menu(this);
 		history = new HistoryScreen(this);
 		item = new ItemScreen(this);
         juego =new Juego(this);
 		//setScreen(menu);
-		batch = new SpriteBatch();
+
 
 
 	//animacion = new FondoAnimado(this);
