@@ -29,7 +29,7 @@ public class Sakura extends Sprite {
 
 
     public Sakura(World world, Juego screen){
-        super(screen.getAtlas().findRegion("camina1"));
+        super(screen.getAtlas().findRegion("Salto"));
         this.world = world;
         currentState = State.STANDING;
         previusState = State.STANDING;
@@ -38,11 +38,11 @@ public class Sakura extends Sprite {
 
         Array<TextureRegion> frames = new Array<TextureRegion>();
         for(int i = 1; i<4; i++){
-            frames.add(new TextureRegion(getTexture(), i*70, 0, 70, 94));
+            frames.add(new TextureRegion(super.getTexture(), i*super.getRegionX(), super.getRegionY(), 70, 94));
         }
         sakuraRun = new Animation(0.1f, frames);
         // faltan coordenadas del salto igual a las de arriba.
-
+        //for(i = )
         sakuraJump = new Animation(0.1f, frames);
 
         sakuraStand = new TextureRegion(getTexture(), 0,0,71,96);
