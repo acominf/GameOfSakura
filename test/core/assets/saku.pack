@@ -1,0 +1,26 @@
+
+saku.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+salto
+  rotate: false
+  xy: 1, 1
+  size: 512, 128
+  orig: 512, 128
+  offset: 0, 0
+  index: -1
+Camina
+  rotate: false
+  xy: 515, 1
+  size: 256, 128
+  orig: 256, 128
+  offset: 0, 0
+  index: -1
+standing
+  rotate: false
+  xy: 773, 1
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
