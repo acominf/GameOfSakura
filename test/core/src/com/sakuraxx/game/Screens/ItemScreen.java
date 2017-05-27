@@ -32,7 +32,7 @@ public class ItemScreen extends Ventana {
         skin = new Skin(Gdx.files.internal("skin/uiskin.json"));
 
         batch = new SpriteBatch();
-        texture = new Texture("Items.jpg");
+        texture = new Texture("ScreenItem.jpg");
 
         back = new TextButton("Regresar", skin);
         back.setBounds(480,20,100,40);
