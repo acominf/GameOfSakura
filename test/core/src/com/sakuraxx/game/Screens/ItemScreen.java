@@ -61,7 +61,7 @@ public class ItemScreen extends Ventana {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         batch.begin();
-        batch.draw(texture,0,0,600,450);
+        batch.draw(texture,0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
         batch.end();
 
         stage.act();

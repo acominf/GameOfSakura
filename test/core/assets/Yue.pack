@@ -1,0 +1,19 @@
+
+Yue.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Yue1
+  rotate: false
+  xy: 1, 1
+  size: 108, 164
+  orig: 108, 164
+  offset: 0, 0
+  index: -1
+Yue2
+  rotate: false
+  xy: 111, 1
+  size: 108, 164
+  orig: 108, 164
+  offset: 0, 0
+  index: -1
