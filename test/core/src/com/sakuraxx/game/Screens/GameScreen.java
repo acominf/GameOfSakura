@@ -1,9 +1,11 @@
-package com.sakuraxx.game;
+package com.sakuraxx.game.Screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.sakuraxx.game.MyGdxGame;
+import com.sakuraxx.game.Ventana;
 
 /**
  * Created by karen on 22/05/2017.
@@ -16,7 +18,7 @@ public class GameScreen extends Ventana {
     public GameScreen(MyGdxGame game) {
         super(game);
         batch = new SpriteBatch();
-        texture = new Texture(Gdx.files.internal("core/assets/nubes.jpg"));
+        texture = new Texture("nubes.jpg");
     }
 
     @Override

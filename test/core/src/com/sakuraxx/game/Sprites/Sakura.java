@@ -1,4 +1,4 @@
-package com.sakuraxx.game;
+package com.sakuraxx.game.Sprites;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
@@ -7,7 +7,11 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.scenes.scene2d.*;
+import com.sakuraxx.game.MyGdxGame;
+import com.sakuraxx.game.Screens.Juego;
+import com.sun.xml.internal.ws.server.sei.EndpointArgumentsBuilder;
 
 import static com.badlogic.gdx.Gdx.input;
 
@@ -17,9 +21,45 @@ import static com.badlogic.gdx.Gdx.input;
  *          y Margarita Neftalí Méndez Rodríguez
  * Esta clase sera la que modulemos a el personaje de Sakura.
  */
-public class Sakura extends Actor {
+public class Sakura extends Sprite {
 
-    private Texture sakura;
+    public World world;
+    public Body b2body;
+
+    private  TextureRegion sakuraStand;
+
+    public Sakura(World world, Juego screen){
+        super(screen.getAtlas().findRegion("camina1"));
+        this.world = world;
+        defineSakura();
+
+        sakuraStand = new TextureRegion(getTexture(), 0,0,71,96);
+        setBounds(0,0,71/(MyGdxGame.PPM*3.5f), 96 / (MyGdxGame.PPM*3.5f));
+        setRegion(sakuraStand);
+
+
+    }
+    public void update(float deltha){
+        setPosition(b2body.getPosition().x - getWidth()/2, b2body.getPosition().y - getHeight()/2);
+    }
+
+    private void defineSakura() {
+        BodyDef bdef = new BodyDef();
+        bdef.position.set(100/ MyGdxGame.PPM, 100/MyGdxGame.PPM);
+        bdef.type = BodyDef.BodyType.DynamicBody;
+
+        b2body = world.createBody(bdef);
+        FixtureDef fdef = new FixtureDef();
+        CircleShape shape = new CircleShape();
+
+        shape.setRadius(10/MyGdxGame.PPM);
+
+        fdef.shape = shape;
+        b2body.createFixture(fdef);
+    }
+
+
+    /*private Texture sakura;
     private TextureRegion img;
     private Sprite sprite;
 
@@ -39,7 +79,7 @@ public class Sakura extends Actor {
                 getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());
         /*batch.draw(img, getX(), getY(),getWidth(), getHeight());
         batch.draw(img, 100,100, getWidth(), getHeight());*/
-        Color c = getColor();
+       /* Color c = getColor();
         batch.setColor(c.r, c.g, c.b, c.a * parentAlpha);
         //batch.draw(img, getWidth(), getHeight());
 
@@ -50,7 +90,7 @@ public class Sakura extends Actor {
         //sprite.split(img);
         sprite.isFlipX();
         //sprite.
-*/
+
 
 
     }

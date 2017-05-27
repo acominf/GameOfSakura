@@ -1,4 +1,4 @@
-package com.sakuraxx.game;
+package com.sakuraxx.game.Screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -10,6 +10,8 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.sakuraxx.game.MyGdxGame;
+import com.sakuraxx.game.Ventana;
 
 /**
  * Created by karen on 21/05/2017.
@@ -23,10 +25,10 @@ public class Menu extends Ventana {
     public Menu(final MyGdxGame game) {
         super(game);
         stage = new Stage(new FitViewport(600, 450));
-        skin = new Skin(Gdx.files.internal("core/assets/skin/uiskin.json"));
+        skin = new Skin(Gdx.files.internal("skin/uiskin.json"));
 
         batch = new SpriteBatch();
-        texture = new Texture(Gdx.files.internal("core/assets/SAKURA.jpg"));
+        texture = new Texture("SAKURA.jpg");
 
         TextButton btnJugar = new TextButton("Jugar", skin);
         btnJugar.setBounds(135, 65, 300, 60);
@@ -73,7 +75,7 @@ public class Menu extends Ventana {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         batch.begin();
-        batch.draw(texture,0,0,600,450);
+        batch.draw(texture,0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
         batch.end();
 
         stage.act();
