@@ -50,7 +50,7 @@ public class Juego extends Ventana implements Screen{
 
 
 
-        atlas = new TextureAtlas("todos.pack");
+        atlas = new TextureAtlas("saku.pack");
         gamecam = new OrthographicCamera();
         gamePort = new FitViewport( MyGdxGame.V_WIDTH/MyGdxGame.PPM, MyGdxGame.V_HEIGHT/MyGdxGame.PPM, gamecam);
         hud = new Hud(super.game.batch);

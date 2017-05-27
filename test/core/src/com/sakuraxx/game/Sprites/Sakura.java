@@ -29,25 +29,31 @@ public class Sakura extends Sprite {
 
 
     public Sakura(World world, Juego screen){
-        super(screen.getAtlas().findRegion("Salto"));
+        super(screen.getAtlas().findRegion("Camina"));
         this.world = world;
         currentState = State.STANDING;
         previusState = State.STANDING;
         stateTimer = 0;
         runningRight = true;
 
-        Array<TextureRegion> frames = new Array<TextureRegion>();
-        for(int i = 1; i<4; i++){
-            frames.add(new TextureRegion(super.getTexture(), i*super.getRegionX(), super.getRegionY(), 70, 94));
-        }
-        sakuraRun = new Animation(0.1f, frames);
-        // faltan coordenadas del salto igual a las de arriba.
-        //for(i = )
-        sakuraJump = new Animation(0.1f, frames);
 
-        sakuraStand = new TextureRegion(getTexture(), 0,0,71,96);
+        Array<TextureRegion> frames = new Array<TextureRegion>();
+        for(int i = 0; i<5; i++){
+            frames.add(new TextureRegion(super.getTexture(), i*100, 3, 100, 100));
+        }
+        sakuraJump = new Animation(0.1f, frames);
+        frames.clear();
+        // faltan coordenadas del salto igual a las de arriba.
+        for(int i = 5; i<8; i++ )
+            frames.add(new TextureRegion(getTexture(), 516+(i-5)*71, 0, 71, 96 ));
+
+        sakuraRun = new Animation(0.1f, frames);
 
         defineSakura();
+
+        sakuraStand = new TextureRegion(getTexture(), 765,0,71,96);
+
+
 
         setBounds(0,0,71/(MyGdxGame.PPM*3.5f), 96 / (MyGdxGame.PPM*3.5f));
         setRegion(sakuraStand);
@@ -62,7 +68,7 @@ public class Sakura extends Sprite {
                 region = (TextureRegion) sakuraJump.getKeyFrame(stateTimer);
                 break;
             case RUNNING:
-                region = (TextureRegion) sakuraJump.getKeyFrame(stateTimer, true);
+                region = (TextureRegion) sakuraRun.getKeyFrame(stateTimer, true);
                 break;
             case FALLING:
             case STANDING:
@@ -70,7 +76,7 @@ public class Sakura extends Sprite {
                 region = sakuraStand;
                 break;
         }
-        if((b2body.getLinearVelocity().x < 0 || !runningRight) && region.isFlipX()){
+        if((b2body.getLinearVelocity().x < 0 || !runningRight) && !region.isFlipX()){
             region.flip(true, false);
             runningRight = false;
         }
@@ -99,6 +105,7 @@ public class Sakura extends Sprite {
 
     public void update(float deltha){
         setPosition(b2body.getPosition().x - getWidth()/2, b2body.getPosition().y - getHeight()/2);
+        setRegion(getFrame(deltha));
     }
 
     private void defineSakura() {
