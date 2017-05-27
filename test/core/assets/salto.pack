@@ -1,0 +1,40 @@
+
+salto.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+salto1
+  rotate: false
+  xy: 1, 1
+  size: 100, 113
+  orig: 100, 113
+  offset: 0, 0
+  index: -1
+salto2
+  rotate: false
+  xy: 103, 1
+  size: 100, 113
+  orig: 100, 113
+  offset: 0, 0
+  index: -1
+salto3
+  rotate: false
+  xy: 205, 1
+  size: 100, 113
+  orig: 100, 113
+  offset: 0, 0
+  index: -1
+salto4
+  rotate: false
+  xy: 307, 1
+  size: 100, 113
+  orig: 100, 113
+  offset: 0, 0
+  index: -1
+salto5
+  rotate: false
+  xy: 409, 1
+  size: 100, 113
+  orig: 100, 113
+  offset: 0, 0
+  index: -1
