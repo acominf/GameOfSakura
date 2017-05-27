@@ -48,6 +48,8 @@ public class Juego extends Ventana implements Screen{
     public Juego(MyGdxGame game) {
         super(game);
 
+
+
         atlas = new TextureAtlas("Camina.pack");
         gamecam = new OrthographicCamera();
         gamePort = new FitViewport( MyGdxGame.V_WIDTH/MyGdxGame.PPM, MyGdxGame.V_HEIGHT/MyGdxGame.PPM, gamecam);

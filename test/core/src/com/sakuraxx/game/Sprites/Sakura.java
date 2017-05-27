@@ -1,19 +1,10 @@
 package com.sakuraxx.game.Sprites;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
+
+import com.badlogic.gdx.graphics.g2d.*;
 import com.badlogic.gdx.physics.box2d.*;
-import com.badlogic.gdx.scenes.scene2d.*;
+import com.badlogic.gdx.utils.Array;
 import com.sakuraxx.game.MyGdxGame;
 import com.sakuraxx.game.Screens.Juego;
-import com.sun.xml.internal.ws.server.sei.EndpointArgumentsBuilder;
-
-import static com.badlogic.gdx.Gdx.input;
 
 /**
  * Created by mendezrodriguez on 11/05/17.
@@ -23,22 +14,89 @@ import static com.badlogic.gdx.Gdx.input;
  */
 public class Sakura extends Sprite {
 
+    public enum State{ FALLING, JUMPING, STANDING, RUNNING};
+    public State currentState;
+    public State previusState;
     public World world;
     public Body b2body;
 
     private  TextureRegion sakuraStand;
 
+    private Animation sakuraRun;
+    private Animation sakuraJump;
+    private boolean runningRight;
+    private float stateTimer;
+
+
     public Sakura(World world, Juego screen){
         super(screen.getAtlas().findRegion("camina1"));
         this.world = world;
-        defineSakura();
+        currentState = State.STANDING;
+        previusState = State.STANDING;
+        stateTimer = 0;
+        runningRight = true;
+
+        Array<TextureRegion> frames = new Array<TextureRegion>();
+        for(int i = 1; i<4; i++){
+            frames.add(new TextureRegion(getTexture(), i*70, 0, 70, 94));
+        }
+        sakuraRun = new Animation(0.1f, frames);
+        // faltan coordenadas del salto igual a las de arriba.
+
+        sakuraJump = new Animation(0.1f, frames);
 
         sakuraStand = new TextureRegion(getTexture(), 0,0,71,96);
+
+        defineSakura();
+
         setBounds(0,0,71/(MyGdxGame.PPM*3.5f), 96 / (MyGdxGame.PPM*3.5f));
         setRegion(sakuraStand);
 
 
     }
+    public TextureRegion getFrame(float deltha){
+        currentState = getState();
+        TextureRegion region;
+        switch (currentState){
+            case JUMPING:
+                region = (TextureRegion) sakuraJump.getKeyFrame(stateTimer);
+                break;
+            case RUNNING:
+                region = (TextureRegion) sakuraJump.getKeyFrame(stateTimer, true);
+                break;
+            case FALLING:
+            case STANDING:
+            default:
+                region = sakuraStand;
+                break;
+        }
+        if((b2body.getLinearVelocity().x < 0 || !runningRight) && region.isFlipX()){
+            region.flip(true, false);
+            runningRight = false;
+        }
+        else if((b2body.getLinearVelocity().x > 0 || runningRight) && region.isFlipX()){
+            region.flip(true, false);
+            runningRight = true;
+        }
+        stateTimer = currentState == previusState ? stateTimer + deltha : 0;
+        previusState = currentState;
+        
+        return region;
+    }
+
+    private State getState() {
+        if(b2body.getLinearVelocity().y > 0 || (b2body.getLinearVelocity().y < 0 && previusState == State.JUMPING))
+            return State.JUMPING;
+        else if(b2body.getLinearVelocity().y < 0)
+            return State.FALLING;
+        else if(b2body.getLinearVelocity().x != 0)
+            return State.RUNNING;
+        else
+            return State.STANDING;
+
+
+    }
+
     public void update(float deltha){
         setPosition(b2body.getPosition().x - getWidth()/2, b2body.getPosition().y - getHeight()/2);
     }
