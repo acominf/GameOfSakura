@@ -17,9 +17,9 @@ import static com.badlogic.gdx.utils.JsonValue.ValueType.object;
  */
 public class Cards extends InteractiveTileObject{
     public Cards (World mundo, TiledMap map, Rectangle bounds){
-
         super(mundo, map, bounds);
         fixture.setUserData(this);
+
     }
 
     @Override

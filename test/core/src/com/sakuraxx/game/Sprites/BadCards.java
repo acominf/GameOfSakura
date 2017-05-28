@@ -14,18 +14,13 @@ public class BadCards extends Cards{
     public BadCards(World world, TiledMap tiledMap, Rectangle rectangle){
         super(world, tiledMap, rectangle);
         fixture.setUserData(this);
-<<<<<<< Updated upstream
         setCategoryFilter(MyGdxGame.BadCard_bit);
-=======
         touch = false;
->>>>>>> Stashed changes
     }
 
     @Override
     public void onlinea() {
         Gdx.app.log("BadCards", "Collision");
-<<<<<<< Updated upstream
-=======
         setTouch(true);
         System.out.println(touch);
     }
@@ -35,6 +30,5 @@ public class BadCards extends Cards{
     }
     public static boolean getTouch(){
         return touch;
->>>>>>> Stashed changes
     }
 }
