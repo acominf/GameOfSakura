@@ -30,7 +30,7 @@ public class Hud implements Disposable{
     private Label lifeLabel; // vidas del player
     private Label levelLabel; // nivel en el que se encuentra
     private Label worldLabel; // Este Label solo dice World
-    private Label marioLabel;   // wo a terminar cambiandole el nombre a esto.. alguien recuerdeme !!!
+    private Label sakurLabel;   // wo a terminar cambiandole el nombre a esto.. alguien recuerdeme !!!
 
     public Hud(SpriteBatch batch){
         worldLife = 3;
@@ -49,9 +49,9 @@ public class Hud implements Disposable{
         lifeLabel = new Label("VIDAS", new LabelStyle(new BitmapFont(), Color.WHITE));
         levelLabel = new Label("1-1", new LabelStyle(new BitmapFont(), Color.WHITE));
         worldLabel = new Label("WORLD", new LabelStyle(new BitmapFont(), Color.WHITE));
-        marioLabel = new Label("SAKURA", new LabelStyle(new BitmapFont(), Color.WHITE));
+        sakurLabel = new Label("SAKURA", new LabelStyle(new BitmapFont(), Color.WHITE));
 
-        table.add(marioLabel).expandX().padTop(10);
+        table.add(sakurLabel).expandX().padTop(10);
         table.add(worldLabel).expandX().padTop(10);
         table.add(lifeLabel).expandX().padTop(10);
         table.row();
