@@ -18,6 +18,9 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.sakuraxx.game.MyGdxGame;
+import com.sakuraxx.game.Sprites.BadCards;
+import com.sakuraxx.game.Sprites.Cards;
+import com.sakuraxx.game.Sprites.GoodCards;
 import com.sakuraxx.game.Sprites.Sakura;
 import com.sakuraxx.game.Scenes.Hud;
 import com.sakuraxx.game.Tools.B2WorldCreator;
@@ -69,6 +72,17 @@ public class Juego extends Ventana implements Screen{
 
         // crea los rectangulos de las coliciones del juego
         new B2WorldCreator(mundo, map);
+
+        for(MapObject object: map.getLayers().get(4).getObjects().getByType(RectangleMapObject.class)){
+            Rectangle rect = ((RectangleMapObject)object).getRectangle();
+            new GoodCards(mundo, map, rect);
+        }
+        for(MapObject object: map.getLayers().get(4).getObjects().getByType(RectangleMapObject.class)){
+            Rectangle rect = ((RectangleMapObject)object).getRectangle();
+            new BadCards(mundo, map, rect);
+        }
+
+
 
     }
 
