@@ -68,10 +68,9 @@ public class Hud implements Disposable{
             lessWorldLife();
             BadCards.setTouch(false);
         }
-
     }
 
-    public void lessWorldLife() { // esta tambien se agrega en donde imprimimos lo de colision pero aparte en donde se cae la player
+    public static void lessWorldLife() { // esta tambien se agrega en donde imprimimos lo de colision pero aparte en donde se cae la player
         if(worldLife >= 1 ) {
             System.out.println(worldLife);
             worldLife -= 1;

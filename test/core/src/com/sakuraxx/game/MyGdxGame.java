@@ -22,11 +22,11 @@ public class MyGdxGame extends Game {
 	public Ventana item;
 	public Ventana history;
 
-	public static final short Default_bit = 1;
+	public static final short DEFAULT_BIT = 1;
 	public static final short Saku_bit = 2;
-	public static final short BadCard_bit = 4;
-	public static final short GoodCard_bit = 8;
-	public static final short Destoyed_bit = 16;
+	public static final short BADCARD_BIT = 4;
+	public static final short GOODCARD_BIT = 8;
+	public static final short DESTROYED_BIT = 16;
 
 	@Override
 	public void create() {
@@ -36,8 +36,6 @@ public class MyGdxGame extends Game {
         menu = new Menu(this);
         history = new HistoryScreen(this);
         item = new ItemScreen(this);
-        //gameScreen = new GameScreen(this);
-
 
         gameScreen = new Juego(this);
 

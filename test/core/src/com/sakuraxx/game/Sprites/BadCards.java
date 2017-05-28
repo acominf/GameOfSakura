@@ -14,7 +14,7 @@ public class BadCards extends Cards{
     public BadCards(World world, TiledMap tiledMap, Rectangle rectangle){
         super(world, tiledMap, rectangle);
         fixture.setUserData(this);
-        setCategoryFilter(MyGdxGame.BadCard_bit);
+        setCategoryFilter(MyGdxGame.BADCARD_BIT);
         touch = false;
     }
 
@@ -22,7 +22,10 @@ public class BadCards extends Cards{
     public void onlinea() {
         Gdx.app.log("BadCards", "Collision");
         setTouch(true);
+        setCategoryFilter(MyGdxGame.DESTROYED_BIT);
         System.out.println(touch);
+        getCell().setTile(null);
+        getCell1().setTile(null);
     }
 
     public static void setTouch(boolean touch) {

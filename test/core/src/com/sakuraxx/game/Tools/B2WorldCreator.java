@@ -42,6 +42,7 @@ public class B2WorldCreator {
             fdef.shape  =shape;
             body.createFixture(fdef);
         }
+
     }
 
 }

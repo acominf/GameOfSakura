@@ -130,7 +130,7 @@ public class Sakura extends Sprite {
         CircleShape shape = new CircleShape();
         shape.setRadius(10/MyGdxGame.PPM);
         fdef.filter.categoryBits = MyGdxGame.Saku_bit;
-        fdef.filter.maskBits = MyGdxGame.Default_bit | MyGdxGame.BadCard_bit | MyGdxGame.GoodCard_bit;
+        fdef.filter.maskBits = MyGdxGame.DEFAULT_BIT | MyGdxGame.BADCARD_BIT | MyGdxGame.GOODCARD_BIT;
 
 
         fdef.shape = shape;

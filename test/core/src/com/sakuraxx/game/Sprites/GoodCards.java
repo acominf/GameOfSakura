@@ -18,14 +18,16 @@ public class GoodCards extends Cards{
     {
         super(world, tiledMap, rectangle);
         fixture.setUserData(this);
-        setCategoryFilter(MyGdxGame.GoodCard_bit);
+        setCategoryFilter(MyGdxGame.GOODCARD_BIT);
     }
 
     @Override
     public void onlinea(){
         Gdx.app.log("GoodCards", "Collision");
 
-        setCategoryFilter(MyGdxGame.Destoyed_bit);
+        setCategoryFilter(MyGdxGame.DESTROYED_BIT);
+        getCell().setTile(null);
+        getCell1().setTile(null);
 
         Hud.addScore(100);
 

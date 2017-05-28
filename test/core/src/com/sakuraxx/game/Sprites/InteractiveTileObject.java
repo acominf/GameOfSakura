@@ -7,6 +7,8 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.*;
 import com.sakuraxx.game.MyGdxGame;
 
+import java.io.PrintStream;
+
 /**
  * Created by mendezrodriguez on 26/05/17.
  */
@@ -45,7 +47,12 @@ public abstract class InteractiveTileObject {
     }
     public TiledMapTileLayer.Cell getCell(){
         TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get(1);
-        return layer.getCell((int)(body.getPosition().x,))
+        return layer.getCell((int) (body.getPosition().x * MyGdxGame.PPM / 16), (int) (body.getPosition().y * MyGdxGame.PPM / 17));
+    }
+    public TiledMapTileLayer.Cell getCell1(){
+        TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get(1);
+        return layer.getCell((int) (body.getPosition().x * MyGdxGame.PPM / 16),( (int) (body.getPosition().y * MyGdxGame.PPM / 15)));
+         //System.out.printf(body.getPosition().toString().);
     }
 
 }
