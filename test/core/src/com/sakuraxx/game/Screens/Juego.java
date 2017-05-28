@@ -14,17 +14,14 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.sakuraxx.game.MyGdxGame;
 import com.sakuraxx.game.Sprites.BadCards;
-import com.sakuraxx.game.Sprites.Cards;
 import com.sakuraxx.game.Sprites.GoodCards;
 import com.sakuraxx.game.Sprites.Sakura;
 import com.sakuraxx.game.Scenes.Hud;
 import com.sakuraxx.game.Tools.B2WorldCreator;
-import com.sakuraxx.game.Ventana;
 import com.sakuraxx.game.WorldContactListener;
 
 /**
@@ -89,6 +86,13 @@ public class Juego extends Ventana implements Screen{
 
     }
 
+   /* public boolean gameOver(){
+        if(player.currentState == Sakura.State.DEAD && player.getStateTimer() > 3){
+            return true;
+        }
+        return false;
+    }*/
+
     public TextureAtlas getAtlas(){
         return atlas;
     }
@@ -98,6 +102,9 @@ public class Juego extends Ventana implements Screen{
      * @param width El ancho de la pantalla
      * @param height El alto de la pantalla
      */
+
+
+
     @Override
     public void resize(int width, int height){
         gamePort.update(width, height);
@@ -157,6 +164,11 @@ public class Juego extends Ventana implements Screen{
         super.game.batch.end();
         //super.game.batch.setProjectionMatrix(hud.escenario.getCamera().combined);
         hud.escenario.draw();
+
+        /*if(gameOver()){
+            game.setScreen(game.menu);
+            dispose();
+        }*/
 
 
     }

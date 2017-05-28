@@ -1,14 +1,9 @@
 package com.sakuraxx.game;
 
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
 //import com.badlogic.gdx.graphics;
-import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.sakuraxx.game.Screens.HistoryScreen;
-import com.sakuraxx.game.Screens.ItemScreen;
-import com.sakuraxx.game.Screens.Juego;
-import com.sakuraxx.game.Screens.Menu;
+import com.sakuraxx.game.Screens.*;
 
 public class MyGdxGame extends Game {
 
@@ -21,6 +16,7 @@ public class MyGdxGame extends Game {
 	public Ventana menu;
 	public Ventana item;
 	public Ventana history;
+	public Ventana GameOver;
 
 	public static final short DEFAULT_BIT = 1;
 	public static final short Saku_bit = 2;
@@ -38,9 +34,10 @@ public class MyGdxGame extends Game {
         item = new ItemScreen(this);
 
         gameScreen = new Juego(this);
+        GameOver = new GameOver(this);
 
 
-        setScreen(menu);
+        setScreen(GameOver);
     }
 	@Override //metodo para eliminar recursos
 	public void dispose () {

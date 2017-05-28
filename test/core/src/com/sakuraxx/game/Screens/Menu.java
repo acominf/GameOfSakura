@@ -11,7 +11,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.sakuraxx.game.MyGdxGame;
-import com.sakuraxx.game.Ventana;
 
 /**
  * Created by karen on 21/05/2017.

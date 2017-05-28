@@ -148,4 +148,8 @@ public class Sakura extends Sprite {
 
     }
 
+    public float getStateTimer(){
+        return stateTimer;
+    }
+
 }

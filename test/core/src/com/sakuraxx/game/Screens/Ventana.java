@@ -1,6 +1,7 @@
-package com.sakuraxx.game;
+package com.sakuraxx.game.Screens;
 
 import com.badlogic.gdx.Screen;
+import com.sakuraxx.game.MyGdxGame;
 
 /**
  * Created by karen on 22/05/2017.
