@@ -36,4 +36,6 @@ public abstract class InteractiveTileObject {
         fixture = body.createFixture(fdef);
     }
 
+    public abstract void onlinea();
+
 }

@@ -1,5 +1,6 @@
 package com.sakuraxx.game.Sprites;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Rectangle;
@@ -16,6 +17,13 @@ import static com.badlogic.gdx.utils.JsonValue.ValueType.object;
  */
 public class Cards extends InteractiveTileObject{
     public Cards (World mundo, TiledMap map, Rectangle bounds){
+
         super(mundo, map, bounds);
+        fixture.setUserData(this);
+    }
+
+    @Override
+    public void onlinea() {
+        Gdx.app.log("cards", "collision");
     }
 }
