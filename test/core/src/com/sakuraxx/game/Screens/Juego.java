@@ -25,6 +25,7 @@ import com.sakuraxx.game.Sprites.Sakura;
 import com.sakuraxx.game.Scenes.Hud;
 import com.sakuraxx.game.Tools.B2WorldCreator;
 import com.sakuraxx.game.Ventana;
+import com.sakuraxx.game.WorldContactListener;
 
 /**
  * Created by mendezrodriguez on 24/05/17.
@@ -69,6 +70,7 @@ public class Juego extends Ventana implements Screen{
         // creamos nuestro jugador que es sakura
         player = new Sakura(mundo, this);
         box2DD = new Box2DDebugRenderer();
+        mundo.setContactListener(new WorldContactListener());
 
         // crea los rectangulos de las coliciones del juego
         new B2WorldCreator(mundo, map);

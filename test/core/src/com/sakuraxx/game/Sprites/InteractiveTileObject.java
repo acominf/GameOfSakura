@@ -15,6 +15,7 @@ public abstract class InteractiveTileObject {
     protected TiledMapTile title;
     protected Rectangle bounds;
     protected Body body;
+    protected Fixture fixture;
 
     public InteractiveTileObject(World w, TiledMap map, Rectangle b){
         this.world = w;
@@ -32,7 +33,7 @@ public abstract class InteractiveTileObject {
 
         shape.setAsBox(bounds.getWidth()/2/MyGdxGame.PPM, bounds.getHeight()/2/MyGdxGame.PPM);
         fdef.shape  =shape;
-        body.createFixture(fdef);
+        fixture = body.createFixture(fdef);
     }
 
 }

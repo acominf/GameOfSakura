@@ -1,6 +1,7 @@
 package com.sakuraxx.game.Sprites;
 
 import com.badlogic.gdx.graphics.g2d.*;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Array;
 import com.sakuraxx.game.MyGdxGame;
@@ -121,6 +122,17 @@ public class Sakura extends Sprite {
 
         fdef.shape = shape;
         b2body.createFixture(fdef);
+
+        fdef.shape = shape;
+        b2body.createFixture(fdef);
+
+        EdgeShape linea = new EdgeShape();
+        linea.set(new Vector2(10/MyGdxGame.PPM, -10/MyGdxGame.PPM),new Vector2(10/MyGdxGame.PPM, 10/MyGdxGame.PPM));
+        fdef.shape = linea;
+        fdef.isSensor = true;
+
+        b2body.createFixture(fdef).setUserData("linea");
+
     }
 
 
