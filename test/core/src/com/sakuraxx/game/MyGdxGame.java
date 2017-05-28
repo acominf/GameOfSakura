@@ -2,8 +2,11 @@ package com.sakuraxx.game;
 
 import com.badlogic.gdx.Game;
 //import com.badlogic.gdx.graphics;
+import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.sakuraxx.game.Screens.*;
+import com.sakuraxx.game.Sprites.Sakura;
 
 public class MyGdxGame extends Game {
 
@@ -18,6 +21,8 @@ public class MyGdxGame extends Game {
 	public Ventana history;
 	public Ventana GameOver;
 
+	public static AssetManager manager;
+
 	public static final short DEFAULT_BIT = 1;
 	public static final short Saku_bit = 2;
 	public static final short BADCARD_BIT = 4;
@@ -28,6 +33,10 @@ public class MyGdxGame extends Game {
 	public void create() {
         batch = new SpriteBatch();
         //setScreen(new Juego(this));
+		manager = new AssetManager();
+        manager.load("audio/music/musicaJuego.mp3", Music.class);
+        manager.load("audio/music/SakuraCC_Op.mp3", Music.class);
+        manager.finishLoading();
 
         menu = new Menu(this);
         history = new HistoryScreen(this);

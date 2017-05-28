@@ -15,18 +15,21 @@ import com.sakuraxx.game.Screens.Juego;
  */
 public class Sakura extends Sprite {
 
-    public enum State{ FALLING, JUMPING, STANDING, RUNNING};
+    public enum State{ FALLING, JUMPING, STANDING, RUNNING, DEAD};
     public State currentState;
     public State previusState;
     public World world;
     public Body b2body;
 
-    private  TextureRegion sakuraStand;
+    private TextureRegion sakuraStand;
+    private Animation sakuraDead;
 
     private Animation sakuraRun;
     private Animation sakuraJump;
     private boolean runningRight;
     private float stateTimer;
+
+    private boolean sakuraIsDead;
 
 
     public Sakura(World world, Juego screen){
@@ -45,14 +48,17 @@ public class Sakura extends Sprite {
         sakuraJump = new Animation(0.1f, frames);
         frames.clear();
         // faltan coordenadas del salto igual a las de arriba.
-        for(int i = 5; i<8; i++ )
-            frames.add(new TextureRegion(getTexture(), 516+(i-5)*71, 0, 71, 96 ));
+        for(int i = 0; i<3; i++ )
+            frames.add(new TextureRegion(getTexture(), 811+i*71, 0, 71, 96 ));
 
         sakuraRun = new Animation(0.1f, frames);
 
+        for(int i = 0; i < 3 ; i ++)
+            frames.add(new TextureRegion(getTexture(), 511+i*71, 0, 93, 124));
+        sakuraDead = new Animation(0.1f, frames);
         defineSakura();
 
-        sakuraStand = new TextureRegion(getTexture(), 765,0,71,96);
+        sakuraStand = new TextureRegion(getTexture(), 1069,0,71,96);
 
 
 
@@ -102,6 +108,8 @@ public class Sakura extends Sprite {
      * @return Regresa el estado en el que se encuentra el player
      */
     public State getState() {
+        if(sakuraIsDead)
+            return State.DEAD;
         if(b2body.getLinearVelocity().y > 0 || (b2body.getLinearVelocity().y < 0 && previusState == State.JUMPING))
             return State.JUMPING;
         else if(b2body.getLinearVelocity().y < 0)
@@ -110,6 +118,9 @@ public class Sakura extends Sprite {
             return State.RUNNING;
         else
             return State.STANDING;
+    }
+    public boolean isDead(){
+            return sakuraIsDead;
     }
 
     public void update(float deltha){

@@ -3,6 +3,7 @@ package com.sakuraxx.game.Screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -35,7 +36,6 @@ public class Juego extends Ventana implements Screen{
     private World mundo;
 
     private Box2DDebugRenderer box2DD; // va de la mano con el player
-    private Sakura player;
 
     private OrthographicCamera gamecam; // camara que centra al personaje
     private Viewport gamePort; // Sirve para que el juego no se distorcione
@@ -45,6 +45,9 @@ public class Juego extends Ventana implements Screen{
     private TmxMapLoader mapLoader; // es para el fondo
     private TiledMap map;
     private OrthogonalTiledMapRenderer renderer;
+
+    private Sakura player;
+    private Music music;
 
     /**
      * En el constructor de Juego se inicializan todas las variables de la clase
@@ -84,14 +87,18 @@ public class Juego extends Ventana implements Screen{
             new BadCards(mundo, map, rect);
         }
 
+        music = MyGdxGame.manager.get("audio/music/musicaJuego.mp3", Music.class);
+        music.setLooping(true);
+        music.play();
+
     }
 
-   /* public boolean gameOver(){
+    public boolean gameOver(){
         if(player.currentState == Sakura.State.DEAD && player.getStateTimer() > 3){
             return true;
         }
         return false;
-    }*/
+    }
 
     public TextureAtlas getAtlas(){
         return atlas;
@@ -165,10 +172,10 @@ public class Juego extends Ventana implements Screen{
         //super.game.batch.setProjectionMatrix(hud.escenario.getCamera().combined);
         hud.escenario.draw();
 
-        /*if(gameOver()){
+        if(gameOver()){
             game.setScreen(game.menu);
             dispose();
-        }*/
+        }
 
 
     }
