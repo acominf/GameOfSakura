@@ -2,6 +2,7 @@ package com.sakuraxx.game.Sprites;
 
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTile;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.*;
 import com.sakuraxx.game.MyGdxGame;
@@ -37,5 +38,10 @@ public abstract class InteractiveTileObject {
     }
 
     public abstract void onlinea();
+    public void setCategoryFilter(short filterBit){
+        Filter filter = new Filter();
+        filter.categoryBits = filterBit;
+        fixture.setFilterData(filter);
+    }
 
 }

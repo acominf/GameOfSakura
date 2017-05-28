@@ -12,8 +12,6 @@ import com.sakuraxx.game.Screens.Menu;
 
 public class MyGdxGame extends Game {
 
-	private AssetManager manager;
-
     public static final int V_WIDTH = 400;
     public static final int V_HEIGHT = 208;
     public static final float PPM = 100;
@@ -23,14 +21,12 @@ public class MyGdxGame extends Game {
 	public Ventana menu;
 	public Ventana item;
 	public Ventana history;
-	//private CarImage asset;
 
-	/*
-	private Texture img;
-	private BitmapFont font;
-	private int height, width;
-	//private Sakura saku; // sakura1
-	private Principal menu;*/
+	public static final short Default_bit = 1;
+	public static final short Saku_bit = 2;
+	public static final short BadCard_bit = 4;
+	public static final short GoodCard_bit = 8;
+	public static final short Destoyed_bit = 16;
 
 	@Override
 	public void create() {

@@ -117,8 +117,10 @@ public class Sakura extends Sprite {
         b2body = world.createBody(bdef);
         FixtureDef fdef = new FixtureDef();
         CircleShape shape = new CircleShape();
-
         shape.setRadius(10/MyGdxGame.PPM);
+        fdef.filter.categoryBits = MyGdxGame.Saku_bit;
+        fdef.filter.maskBits = MyGdxGame.Default_bit | MyGdxGame.BadCard_bit | MyGdxGame.GoodCard_bit;
+
 
         fdef.shape = shape;
         b2body.createFixture(fdef);
