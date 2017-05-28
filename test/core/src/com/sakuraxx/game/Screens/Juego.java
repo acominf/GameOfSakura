@@ -67,8 +67,7 @@ public class Juego extends Ventana implements Screen{
         map = mapLoader.load("guapoFondo .tmx");
 
         renderer = new OrthogonalTiledMapRenderer(map, 1/MyGdxGame.PPM);
-        //renderer.setView(new Matrix4(),0,0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        gamecam.position.set(gamePort.getWorldWidth()/2 , gamePort.getWorldHeight()/2 , 0);
+        gamecam.position.set(gamePort.getWorldWidth()/2, gamePort.getWorldHeight()/2 , 0);
 
         mundo = new World(new Vector2(0, -10), true); // el vector hace la par de la gravedad
         // creamos nuestro jugador que es sakura
@@ -172,9 +171,6 @@ public class Juego extends Ventana implements Screen{
         mundo.step(1/60f, 6, 2);
 
         player.update(deltha);
-        if(player.getState() == Sakura.State.FALLING){
-            hud.lessWorldLife();
-        }
         hud.update(deltha);
         gamecam.position.x = player.b2body.getPosition().x;
 

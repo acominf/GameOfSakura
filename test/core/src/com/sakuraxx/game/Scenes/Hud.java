@@ -12,6 +12,7 @@ import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.sakuraxx.game.MyGdxGame;
+import com.sakuraxx.game.Sprites.BadCards;
 
 
 /**
@@ -20,11 +21,11 @@ import com.sakuraxx.game.MyGdxGame;
 public class Hud implements Disposable{
     public Stage escenario;
     private Viewport viewport;
-    private Integer worldLife;
-    private float lifeCount;
+    private static Integer worldLife;
+    private static float lifeCount;
     private static Integer score;
 
-    private Label countDownLabel;
+    private static Label countDownLabel;
     private static Label scoreLabel; //puntuacion que ah obtenido
     private Label lifeLabel; // vidas del player
     private Label levelLabel; // nivel en el que se encuentra
@@ -48,7 +49,7 @@ public class Hud implements Disposable{
         lifeLabel = new Label("VIDAS", new LabelStyle(new BitmapFont(), Color.WHITE));
         levelLabel = new Label("1-1", new LabelStyle(new BitmapFont(), Color.WHITE));
         worldLabel = new Label("WORLD", new LabelStyle(new BitmapFont(), Color.WHITE));
-        marioLabel = new Label("SAKU", new LabelStyle(new BitmapFont(), Color.WHITE));
+        marioLabel = new Label("SAKURA", new LabelStyle(new BitmapFont(), Color.WHITE));
 
         table.add(marioLabel).expandX().padTop(10);
         table.add(worldLabel).expandX().padTop(10);
@@ -63,16 +64,21 @@ public class Hud implements Disposable{
     }
 
     public void update(float deltha){
+        if(BadCards.getTouch()){
+            lessWorldLife();
+            BadCards.setTouch(false);
+        }
 
     }
 
     public void lessWorldLife() { // esta tambien se agrega en donde imprimimos lo de colision pero aparte en donde se cae la player
-        if(lifeCount >= 1 ) {
-            this.worldLife -= 1;
+        if(worldLife >= 1 ) {
+            System.out.println(worldLife);
+            worldLife -= 1;
             countDownLabel.setText(String.format("%01d", worldLife));
         }
     }
-    public void addScore(int value){ // se debe añadir en donde este el hit de cards (donde imprimimos collision)
+    public static void addScore(int value){ // se debe añadir en donde este el hit de cards (donde imprimimos collision)
         score += value;
         scoreLabel.setText(String.format("%06d", score));
     }

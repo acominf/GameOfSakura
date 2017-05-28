@@ -61,6 +61,12 @@ public class Sakura extends Sprite {
 
 
     }
+
+    /**
+     * El metodo getFrame() es el que define las imagenes que se usaran segun el estado en el que se encuentre Sakura
+     * @param deltha es el timepo de reaccion del dispositivo que este usando.
+     * @return regresa un TextureRegion
+     */
     public TextureRegion getFrame(float deltha){
         currentState = getState();
         TextureRegion region;
@@ -91,6 +97,10 @@ public class Sakura extends Sprite {
         return region;
     }
 
+    /**
+     * El metodo getState() nos ayuda a saber si nuestro player esta corriendo, saltando, de pie o cayendo
+     * @return Regresa el estado en el que se encuentra el player
+     */
     public State getState() {
         if(b2body.getLinearVelocity().y > 0 || (b2body.getLinearVelocity().y < 0 && previusState == State.JUMPING))
             return State.JUMPING;
@@ -100,8 +110,6 @@ public class Sakura extends Sprite {
             return State.RUNNING;
         else
             return State.STANDING;
-
-
     }
 
     public void update(float deltha){
@@ -109,6 +117,9 @@ public class Sakura extends Sprite {
         setRegion(getFrame(deltha));
     }
 
+    /**
+     * Define las dimenciones de Sakura nuestra player
+     */
     private void defineSakura() {
         BodyDef bdef = new BodyDef();
         bdef.position.set(100/ MyGdxGame.PPM, 100/MyGdxGame.PPM);
