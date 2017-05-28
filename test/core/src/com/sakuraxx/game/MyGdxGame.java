@@ -46,7 +46,7 @@ public class MyGdxGame extends Game {
         GameOver = new GameOver(this);
 
 
-        setScreen(GameOver);
+        setScreen(menu);
     }
 	@Override //metodo para eliminar recursos
 	public void dispose () {
