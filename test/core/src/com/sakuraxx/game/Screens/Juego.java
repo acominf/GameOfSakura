@@ -49,10 +49,14 @@ public class Juego extends Ventana implements Screen{
     private TiledMap map;
     private OrthogonalTiledMapRenderer renderer;
 
+    /**
+     * En el constructor de Juego se inicializan todas las variables de la clase
+     * y se determina dod ese encuentra el piso, plataformas y cartas buenas o malas.
+     *
+     * @param game
+     */
     public Juego(MyGdxGame game) {
         super(game);
-
-
 
         atlas = new TextureAtlas("saku.pack");
         gamecam = new OrthographicCamera();
@@ -79,18 +83,22 @@ public class Juego extends Ventana implements Screen{
             Rectangle rect = ((RectangleMapObject)object).getRectangle();
             new GoodCards(mundo, map, rect);
         }
-        for(MapObject object: map.getLayers().get(4).getObjects().getByType(RectangleMapObject.class)){
+        for(MapObject object: map.getLayers().get(5).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect = ((RectangleMapObject)object).getRectangle();
             new BadCards(mundo, map, rect);
         }
-
-
 
     }
 
     public TextureAtlas getAtlas(){
         return atlas;
     }
+
+    /**
+     * Redimenciona la viewPort que es lo que se puede ver del juego
+     * @param width El ancho de la pantalla
+     * @param height El alto de la pantalla
+     */
     @Override
     public void resize(int width, int height){
         gamePort.update(width, height);
@@ -110,6 +118,12 @@ public class Juego extends Ventana implements Screen{
     public void hide() {
 
     }
+
+    /**
+     * Este metodo sirve para eliminar los recursos usados
+     * Aunque java tiene un recogedor de basura, no funciona en automatico para los recursos almacendos en la tarjeta grafica
+     * asi que es necesario eliminarlos manualmente.
+     */
 
     @Override
     public void dispose() {
@@ -148,19 +162,30 @@ public class Juego extends Ventana implements Screen{
 
     }
 
-
+    /**
+     * En este metodo carga lo que queremos cambiar del hud, que es el
+     * @param deltha
+     */
     public void update(float deltha){
         handleInput(deltha);
 
         mundo.step(1/60f, 6, 2);
 
         player.update(deltha);
+        if(player.getState() == Sakura.State.FALLING){
+            hud.lessWorldLife();
+        }
+        hud.update(deltha);
         gamecam.position.x = player.b2body.getPosition().x;
 
         gamecam.update();
         renderer.setView(gamecam);
     }
 
+    /**
+     * En este metodo se utiliza para mover al player
+     * @param deltha
+     */
     private void handleInput(float deltha) {
         if ( Gdx.input.isKeyJustPressed(Input.Keys.W)|| Gdx.input.isKeyJustPressed(Input.Keys.UP))
             player.b2body.applyLinearImpulse(new Vector2(0,4f), player.b2body.getWorldCenter(), true );

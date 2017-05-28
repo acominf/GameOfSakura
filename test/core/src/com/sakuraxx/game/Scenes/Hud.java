@@ -20,20 +20,20 @@ import com.sakuraxx.game.MyGdxGame;
 public class Hud implements Disposable{
     public Stage escenario;
     private Viewport viewport;
-    private Integer worldTimer;
-    private float timeCount;
-    private Integer score;
+    private Integer worldLife;
+    private float lifeCount;
+    private static Integer score;
 
-    Label countDownLabel;
-    Label scoreLabel;
-    Label timeLabel;
-    Label levelLabel;
-    Label worldLabel;
-    Label marioLabel;   // wo a terminar cambiandole el nombre a esto.. alguien recuerdeme !!!
+    private Label countDownLabel;
+    private static Label scoreLabel; //puntuacion que ah obtenido
+    private Label lifeLabel; // vidas del player
+    private Label levelLabel; // nivel en el que se encuentra
+    private Label worldLabel; // Este Label solo dice World
+    private Label marioLabel;   // wo a terminar cambiandole el nombre a esto.. alguien recuerdeme !!!
 
     public Hud(SpriteBatch batch){
-        worldTimer = 300;
-        timeCount = 0;
+        worldLife = 3;
+        lifeCount = 0;
         score = 0;
 
         viewport = new FitViewport(MyGdxGame.V_HEIGHT, MyGdxGame.V_HEIGHT, new OrthographicCamera());
@@ -43,16 +43,16 @@ public class Hud implements Disposable{
         table.top();
         table.setFillParent(true);
 
-        countDownLabel = new Label(String.format("%03d", worldTimer), new LabelStyle(new BitmapFont(), Color.WHITE));
+        countDownLabel = new Label(String.format("%01d", worldLife), new LabelStyle(new BitmapFont(), Color.WHITE));
         scoreLabel = new Label(String.format("%06d", score), new LabelStyle(new BitmapFont(), Color.WHITE));
-        timeLabel = new Label("TIME", new LabelStyle(new BitmapFont(), Color.WHITE));
+        lifeLabel = new Label("VIDAS", new LabelStyle(new BitmapFont(), Color.WHITE));
         levelLabel = new Label("1-1", new LabelStyle(new BitmapFont(), Color.WHITE));
         worldLabel = new Label("WORLD", new LabelStyle(new BitmapFont(), Color.WHITE));
         marioLabel = new Label("SAKU", new LabelStyle(new BitmapFont(), Color.WHITE));
 
         table.add(marioLabel).expandX().padTop(10);
         table.add(worldLabel).expandX().padTop(10);
-        table.add(timeLabel).expandX().padTop(10);
+        table.add(lifeLabel).expandX().padTop(10);
         table.row();
         table.add(scoreLabel).expandX();
         table.add(levelLabel).expandX();
@@ -60,6 +60,21 @@ public class Hud implements Disposable{
 
         escenario.addActor(table);
 
+    }
+
+    public void update(float deltha){
+
+    }
+
+    public void lessWorldLife() { // esta tambien se agrega en donde imprimimos lo de colision pero aparte en donde se cae la player
+        if(lifeCount >= 1 ) {
+            this.worldLife -= 1;
+            countDownLabel.setText(String.format("%01d", worldLife));
+        }
+    }
+    public void addScore(int value){ // se debe añadir en donde este el hit de cards (donde imprimimos collision)
+        score += value;
+        scoreLabel.setText(String.format("%06d", score));
     }
 
     @Override
