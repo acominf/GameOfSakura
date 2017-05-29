@@ -1,52 +1,48 @@
 ### Objetivo del juego/aplicación
-El objetivo del juego es que Sakura venza y junte todas las cartas Clow. 
+El objetivo del juego es que Sakura junte todas las cartas Clow. 
 
 ### Descripción del juego/aplicación
-El juego consiste en avanzar por las plataformas y evitar ser vencida por las Cartas Clow que la perseguirán y atacaran. Si consigues llegar a la plataforma más alta antes de ser vencida podras luchar contra el espíritu de la carta que se encuentra al final de cada nivel.
-Si llegas a ser vencido por el enemigo se reinicia el nivel. Tomando en cuenta de que tienes una cantidad especifica de vida.
-El juego consta de X niveles y habrá una carta en cada nivel.
+El juego consiste en avanzar por las plataformas y atrapar las Cartas Clow rosas las cuales le daran 100 puntos. Si ella atrapa alguna carta Clow amarilla esta le quitara una vida (Sakura tendra tres vidas). Al momento de que Sakura se quede sin vidas o se caiga de alguna plataforma perdera.
 
-Durante su camino se puede encontrar con algunos de sus amigos u objetos los cuales le pueden dar poderes especiales para poder derrotar a las cartas Clow.
-
-**Enemigos**
-
-_The watery:_ Es la carta del agua. 
-_The Windy:_ Es la carta del Viento.
 
 **Items**
 
-_The Jump:_ Es la carta del salto, un pequeño ítem de  que te ayudará para avanzar más rápido. 
-_The Flower:_ Esta carta es la carta de las flores, y este es un item que recupera la vida.
-
-**Amigos**
-
-_ Shaoran _
+Seran todas las cartas Clow de color rosa que atrape.
 
 
 ### Clases principales y sus características
-1. Persona
-* Edad
+1. Sakura
+* Movimiento
+* Tamaño 
+* Detectar Cartas
 
-2. Sakura
-* Vidas
-* Item
-* Poder
-* CartasVencidas
+2. WorldContactListener
+* Detectar carta  buena o mala
 
-3. Cartas
-* Actitud
-* Poder
-* caracteristica3
+3. GoodCards
+* Dar puntos
+* Desaparecer al tocarlas
 
-4. Clase 4
-* caracteristica1
-* caracteristica2
-* caracteristica3
+4. BadCards
+* Quitar vidas
+* Desaparecer al tocarlas
 
-5. Clase 5
-* caracteristica1
-* caracteristica2
-* caracteristica3
+5. Juego
+* Mostrar el fondo
+* Mostrar al jugador
+* Musica
+* Teclas para mover al jugador
+
+6. Menu
+* Botones "items", "historia", "jugar"
+* Fondo
+* Musica
+
+7. MyGdxGame
+* Tamaño de pantalla
+* Inicializar las Ventanas
+* Cargar la musica
+
 
 ### Diagrama de clases
 
