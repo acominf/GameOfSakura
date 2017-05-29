@@ -1,6 +1,7 @@
 package com.sakuraxx.game.Screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -19,6 +20,7 @@ import java.awt.*;
 public class GameOver extends Ventana {
     private Viewport viewport;
     private Stage stage;
+    public static Music music;
     public GameOver(MyGdxGame game) {
         super(game);
         viewport = new FitViewport(MyGdxGame.V_WIDTH, MyGdxGame.V_HEIGHT, new OrthographicCamera());
@@ -36,6 +38,9 @@ public class GameOver extends Ventana {
         table.add(GameOverLabel).expandX();
         table.row();
         table.add(playAgainLabel).expandX().padTop(10f);
+        music = MyGdxGame.manager.get("audio/music/73_Game_Over.mp3", Music.class);
+        music.setLooping(true);
+        music.stop();
 
 
         stage.addActor(table);
@@ -43,6 +48,9 @@ public class GameOver extends Ventana {
 
     @Override
     public void render(float delta){
+        if(Juego.getMusic().isPlaying())
+            Juego.setMusic(false);
+        music.play();
         if(Gdx.input.justTouched()){
             game.setScreen(game.menu);
             dispose();

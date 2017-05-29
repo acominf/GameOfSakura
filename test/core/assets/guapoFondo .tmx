@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0.0" orientation="orthogonal" renderorder="right-down" width="240" height="13" tilewidth="16" tileheight="16" nextobjectid="109">
+<map version="1.0.0" orientation="orthogonal" renderorder="right-down" width="240" height="13" tilewidth="16" tileheight="16" nextobjectid="113">
  <tileset firstgid="1" source="overload.tsx"/>
  <tileset firstgid="2851" source="fondosonic.tsx"/>
  <tileset firstgid="3904" source="plataformm.tsx"/>
@@ -105,5 +105,8 @@
   <object id="101" x="2768.02" y="80.5464" width="15.544" height="32.0301"/>
   <object id="104" x="3119.88" y="128.592" width="16.0151" height="31.0881"/>
   <object id="108" x="3503.77" y="64.5313" width="16.2506" height="32.0301"/>
+ </objectgroup>
+ <objectgroup name="Meta">
+  <object id="110" x="3776.49" y="97.9608" width="62.9748" height="12.495"/>
  </objectgroup>
 </map>

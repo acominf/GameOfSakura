@@ -47,7 +47,7 @@ public class Juego extends Ventana implements Screen{
     private OrthogonalTiledMapRenderer renderer;
 
     private Sakura player;
-    private Music music;
+    private static Music music;
 
     /**
      * En el constructor de Juego se inicializan todas las variables de la clase
@@ -57,6 +57,7 @@ public class Juego extends Ventana implements Screen{
      */
     public Juego(MyGdxGame game) {
         super(game);
+
 
         atlas = new TextureAtlas("saku.pack");
         gamecam = new OrthographicCamera();
@@ -89,8 +90,20 @@ public class Juego extends Ventana implements Screen{
 
         music = MyGdxGame.manager.get("audio/music/musicaJuego.mp3", Music.class);
         music.setLooping(true);
-        music.play();
+        music.stop();
+        //music.play();
 
+    }
+
+    public static Music getMusic() {
+        return music;
+    }
+
+    public static void setMusic(boolean a) {
+        if(a)
+            Juego.music.play();
+        else
+            Juego.music.stop();
     }
 
     public boolean gameOver(){
@@ -109,8 +122,6 @@ public class Juego extends Ventana implements Screen{
      * @param width El ancho de la pantalla
      * @param height El alto de la pantalla
      */
-
-
 
     @Override
     public void resize(int width, int height){
@@ -156,6 +167,9 @@ public class Juego extends Ventana implements Screen{
     @Override
     public void render(float delta) {
         //super.render(delta);
+        Menu.music.pause();
+        Juego.music.play();
+        music.setVolume(.8f);
         update(delta);
 
         Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -199,7 +213,7 @@ public class Juego extends Ventana implements Screen{
 
     /**
      * En este metodo se utiliza para mover al player
-     * @param deltha
+     * @param deltha el tiempo por frame
      */
     private void handleInput(float deltha) {
         if ( Gdx.input.isKeyJustPressed(Input.Keys.W)|| Gdx.input.isKeyJustPressed(Input.Keys.UP))

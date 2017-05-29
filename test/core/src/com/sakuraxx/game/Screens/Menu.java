@@ -1,6 +1,7 @@
 package com.sakuraxx.game.Screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
@@ -21,6 +22,8 @@ public class Menu extends Ventana {
     private Texture texture;
     private SpriteBatch batch;
 
+    public static Music music;
+
     public Menu(final MyGdxGame game) {
         super(game);
         stage = new Stage(new FitViewport(600, 450));
@@ -28,6 +31,7 @@ public class Menu extends Ventana {
 
         batch = new SpriteBatch();
         texture = new Texture("SAKURA.jpg");
+
 
         TextButton btnJugar = new TextButton("Jugar", skin);
         btnJugar.setBounds(135, 65, 300, 60);
@@ -61,6 +65,8 @@ public class Menu extends Ventana {
         stage.addActor(btnJugar);
         stage.addActor(btnHistoria);
         stage.addActor(btnItems);
+
+
     }
 
     @Override
@@ -70,11 +76,16 @@ public class Menu extends Ventana {
 
     @Override
     public void render(float delta){
+        if(GameOver.music.isPlaying())
+            GameOver.music.stop();
+        music = MyGdxGame.manager.get("audio/music/SakuraCC_Op.mp3", Music.class);
+        music.setLooping(true);
+        music.play();
         Gdx.gl.glClearColor(0.2f, 0.7f, 0.8f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         batch.begin();
-        batch.draw(texture,0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+        batch.draw(texture,0,0,MyGdxGame.V_WIDTH*MyGdxGame.PPM/65, MyGdxGame.V_HEIGHT*MyGdxGame.PPM/40);//Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
         batch.end();
 
         stage.act();

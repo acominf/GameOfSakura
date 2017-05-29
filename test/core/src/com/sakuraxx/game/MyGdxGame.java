@@ -2,6 +2,7 @@ package com.sakuraxx.game;
 
 import com.badlogic.gdx.Game;
 //import com.badlogic.gdx.graphics;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -11,7 +12,7 @@ import com.sakuraxx.game.Sprites.Sakura;
 public class MyGdxGame extends Game {
 
     public static final int V_WIDTH = 400;
-    public static final int V_HEIGHT = 208;
+    public static final int V_HEIGHT = 200;
     public static final float PPM = 100;
 
 	public SpriteBatch batch;
@@ -29,6 +30,8 @@ public class MyGdxGame extends Game {
 	public static final short GOODCARD_BIT = 8;
 	public static final short DESTROYED_BIT = 16;
 
+	public static Music musica;
+
 	@Override
 	public void create() {
         batch = new SpriteBatch();
@@ -36,6 +39,11 @@ public class MyGdxGame extends Game {
 		manager = new AssetManager();
         manager.load("audio/music/musicaJuego.mp3", Music.class);
         manager.load("audio/music/SakuraCC_Op.mp3", Music.class);
+        manager.load("audio/music/79_Last_Battle.mp3", Music.class);
+        manager.load("audio/music/09_Small_Item_Catch.mp3", Music.class);
+        manager.load("audio/sounds/addScore.wav", Music.class);
+        manager.load("audio/music/73_Game_Over.mp3", Music.class);
+        manager.load("audio/sounds/LessLife.wav", Music.class);
         manager.finishLoading();
 
         menu = new Menu(this);
@@ -60,6 +68,7 @@ public class MyGdxGame extends Game {
 	    super.render();
 
     }
+
 
 }
 
