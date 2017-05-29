@@ -14,7 +14,7 @@ public class MyGdxGame extends Game {
     public static final int V_WIDTH = 400;
     public static final int V_HEIGHT = 200;
     public static final float PPM = 100;
-    public static final int LIMITE_DOWN = 85;
+
 
 	public SpriteBatch batch;
 	public Ventana gameScreen;
@@ -22,14 +22,16 @@ public class MyGdxGame extends Game {
 	public Ventana item;
 	public Ventana history;
 	public Ventana GameOver;
+	public Ventana winScreen;
 
 	public static AssetManager manager;
-
+    public static final short  LIMITE_DOWN_BIT = 64;
 	public static final short DEFAULT_BIT = 1;
 	public static final short Saku_bit = 2;
 	public static final short BADCARD_BIT = 4;
 	public static final short GOODCARD_BIT = 8;
 	public static final short DESTROYED_BIT = 16;
+	public static final short META_BIT = 32;
 
 	public static Music musica;
 
@@ -42,6 +44,7 @@ public class MyGdxGame extends Game {
         manager.load("audio/music/SakuraCC_Op.mp3", Music.class);
         manager.load("audio/music/79_Last_Battle.mp3", Music.class);
         manager.load("audio/music/09_Small_Item_Catch.mp3", Music.class);
+		manager.load("audio/music/49_Medal_Get_Fanfare.mp3", Music.class);
         manager.load("audio/sounds/addScore.wav", Music.class);
         manager.load("audio/music/73_Game_Over.mp3", Music.class);
         manager.load("audio/sounds/LessLife.wav", Music.class);
@@ -50,6 +53,7 @@ public class MyGdxGame extends Game {
         menu = new Menu(this);
         history = new HistoryScreen(this);
         item = new ItemScreen(this);
+        winScreen = new WinScreen(this);
 
         gameScreen = new Juego(this);
         GameOver = new GameOver(this);

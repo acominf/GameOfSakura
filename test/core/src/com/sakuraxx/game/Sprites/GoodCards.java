@@ -36,14 +36,7 @@ public class GoodCards extends Cards{
         setCategoryFilter(MyGdxGame.DESTROYED_BIT);
         getCell().setTile(null);
         getCell1().setTile(null);
-        /*musica = MyGdxGame.manager.get("audio/music/09_Small_Item_Catch.mp3", Music.class);
-        musica.setLooping(true);
-        musica.play();*/
-        //Gdx.audio.newSound(FileHandle.tempFile("audio/sounds/addScore.wav"));
         sonido.play();
-
-
-
         Hud.addScore(100);
 
     }

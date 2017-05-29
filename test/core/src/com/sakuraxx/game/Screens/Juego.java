@@ -4,10 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.MapObject;
@@ -21,9 +19,7 @@ import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.sakuraxx.game.MyGdxGame;
-import com.sakuraxx.game.Sprites.BadCards;
-import com.sakuraxx.game.Sprites.GoodCards;
-import com.sakuraxx.game.Sprites.Sakura;
+import com.sakuraxx.game.Sprites.*;
 import com.sakuraxx.game.Scenes.Hud;
 import com.sakuraxx.game.Tools.B2WorldCreator;
 import com.sakuraxx.game.Tools.WorldContactListener;
@@ -94,6 +90,14 @@ public class Juego extends Ventana implements Screen{
         for(MapObject object: map.getLayers().get(5).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect = ((RectangleMapObject)object).getRectangle();
             new BadCards(mundo, map, rect);
+        }
+        for(MapObject object: map.getLayers().get(6).getObjects().getByType(RectangleMapObject.class)){
+            Rectangle rect = ((RectangleMapObject)object).getRectangle();
+            new Meta(mundo, map, rect);
+        }
+        for(MapObject object: map.getLayers().get(7).getObjects().getByType(RectangleMapObject.class)){
+            Rectangle rect = ((RectangleMapObject)object).getRectangle();
+            new LimiteAbajo(mundo, map, rect);
         }
 
         music = MyGdxGame.manager.get("audio/music/musicaJuego.mp3", Music.class);
@@ -214,11 +218,12 @@ public class Juego extends Ventana implements Screen{
 
         renderer.setView(gamecam);
         gamecam.update();
-        if(player.isDie()){
+        if(player.isDied()){
             super.game.setScreen(super.game.GameOver);
-            Hud.worldLife = 3;
             player.isLife();
-
+        }
+        if(Meta.getTouch()){
+            super.game.setScreen(super.game.winScreen);
         }
     }
 
@@ -229,7 +234,7 @@ public class Juego extends Ventana implements Screen{
     private void handleInput(float deltha) {
         if(player.currentState != Sakura.State.DEAD){ // solo hace lo siguiente si no esta muerto
             // Se mueve hacia arriba con W y Flecha a la arriba
-            if ( Gdx.input.isKeyJustPressed(Input.Keys.W)|| Gdx.input.isKeyJustPressed(Input.Keys.UP))
+            if ( Gdx.input.isKeyJustPressed(Input.Keys.SPACE)|| Gdx.input.isKeyJustPressed(Input.Keys.UP))
                 player.b2body.applyLinearImpulse(new Vector2(0,4f), player.b2body.getWorldCenter(), true );
             // Se mueve hacia la derecha con D o Flecha Derecha
             else if ( Gdx.input.isKeyPressed(Input.Keys.D)||Gdx.input.isKeyPressed(Input.Keys.RIGHT) && player.b2body.getLinearVelocity().x <= 2)

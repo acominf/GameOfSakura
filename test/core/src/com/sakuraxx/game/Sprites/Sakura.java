@@ -142,7 +142,7 @@ public class Sakura extends Sprite {
     public void update(float deltha){
         setPosition(b2body.getPosition().x - getWidth()/2, b2body.getPosition().y - getHeight()/2);
         setRegion(getFrame(deltha));
-        isDie();
+        isDied();
     }
 
     /**
@@ -169,15 +169,15 @@ public class Sakura extends Sprite {
         linea.set(new Vector2(10/MyGdxGame.PPM, -10/MyGdxGame.PPM),new Vector2(10/MyGdxGame.PPM, 10/MyGdxGame.PPM));
         fdef.shape = linea;
         fdef.isSensor = true;
-
         b2body.createFixture(fdef).setUserData("linea");
 
     }
-    public boolean isDie(){
+    public boolean isDied(){
         EdgeShape linea = new EdgeShape();
-        linea.set(new Vector2(0, 20/MyGdxGame.PPM), new Vector2(MyGdxGame.V_WIDTH/MyGdxGame.PPM, 20/MyGdxGame.PPM));
+        linea.set(new Vector2(0, 0), new Vector2(MyGdxGame.V_WIDTH/MyGdxGame.PPM, 50/MyGdxGame.PPM));
         fdef.shape = linea;
-        if(Hud.worldLife < 1) {
+        fdef.isSensor = true;
+        if(Hud.worldLife < 1 || LimiteAbajo.getTouch()) {
             sakuraIsDead = true;
             MyGdxGame.manager.get("audio/music/musicaJuego.mp3", Music.class).stop();
             Filter filter = new Filter();
