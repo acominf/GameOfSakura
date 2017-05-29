@@ -14,6 +14,7 @@ public class MyGdxGame extends Game {
     public static final int V_WIDTH = 400;
     public static final int V_HEIGHT = 200;
     public static final float PPM = 100;
+    public static final int LIMITE_DOWN = 85;
 
 	public SpriteBatch batch;
 	public Ventana gameScreen;
@@ -59,13 +60,16 @@ public class MyGdxGame extends Game {
 	@Override //metodo para eliminar recursos
 	public void dispose () {
 		super.dispose();
+		manager.dispose();
 		batch.dispose();
+
 		//font.dispose();
 	}
 
 	@Override
 	public void render() {
 	    super.render();
+	    //if(gameScreen.)
 
     }
 

@@ -1,11 +1,15 @@
 package com.sakuraxx.game.Sprites;
 
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.*;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Array;
 import com.sakuraxx.game.MyGdxGame;
+import com.sakuraxx.game.Scenes.Hud;
 import com.sakuraxx.game.Screens.Juego;
+
+import static com.sakuraxx.game.Sprites.Sakura.State.STANDING;
 
 /**
  * Created by mendezrodriguez on 11/05/17.
@@ -29,17 +33,25 @@ public class Sakura extends Sprite {
     private boolean runningRight;
     private float stateTimer;
 
+    BodyDef bdef;
+    FixtureDef fdef ;
+    CircleShape shape;
     private boolean sakuraIsDead;
 
 
     public Sakura(World world, Juego screen){
         super(screen.getAtlas().findRegion("Camina"));
         this.world = world;
-        currentState = State.STANDING;
-        previusState = State.STANDING;
+
+        currentState = STANDING;
+        previusState = STANDING;
         stateTimer = 0;
         runningRight = true;
+        sakuraIsDead = false;
 
+        bdef = new BodyDef();
+        fdef = new FixtureDef();
+        shape = new CircleShape();
 
         Array<TextureRegion> frames = new Array<TextureRegion>();
         for(int i = 0; i<5; i++){
@@ -77,6 +89,9 @@ public class Sakura extends Sprite {
         currentState = getState();
         TextureRegion region;
         switch (currentState){
+            case DEAD:
+                region = (TextureRegion) sakuraDead.getKeyFrame(stateTimer);
+                break;
             case JUMPING:
                 region = (TextureRegion) sakuraJump.getKeyFrame(stateTimer);
                 break;
@@ -117,28 +132,28 @@ public class Sakura extends Sprite {
         else if(b2body.getLinearVelocity().x != 0)
             return State.RUNNING;
         else
-            return State.STANDING;
+            return STANDING;
     }
-    public boolean isDead(){
-            return sakuraIsDead;
+    public boolean isLife(){
+            Hud.worldLife = 3;
+            return sakuraIsDead = false;
     }
 
     public void update(float deltha){
         setPosition(b2body.getPosition().x - getWidth()/2, b2body.getPosition().y - getHeight()/2);
         setRegion(getFrame(deltha));
+        isDie();
     }
 
     /**
      * Define las dimenciones de Sakura nuestra player
      */
     private void defineSakura() {
-        BodyDef bdef = new BodyDef();
-        bdef.position.set(100/ MyGdxGame.PPM, 100/MyGdxGame.PPM);
+
+        bdef.position.set(50/ MyGdxGame.PPM, 50/MyGdxGame.PPM);
         bdef.type = BodyDef.BodyType.DynamicBody;
 
         b2body = world.createBody(bdef);
-        FixtureDef fdef = new FixtureDef();
-        CircleShape shape = new CircleShape();
         shape.setRadius(10/MyGdxGame.PPM);
         fdef.filter.categoryBits = MyGdxGame.Saku_bit;
         fdef.filter.maskBits = MyGdxGame.DEFAULT_BIT | MyGdxGame.BADCARD_BIT | MyGdxGame.GOODCARD_BIT;
@@ -157,6 +172,23 @@ public class Sakura extends Sprite {
 
         b2body.createFixture(fdef).setUserData("linea");
 
+    }
+    public boolean isDie(){
+        EdgeShape linea = new EdgeShape();
+        linea.set(new Vector2(0, 20/MyGdxGame.PPM), new Vector2(MyGdxGame.V_WIDTH/MyGdxGame.PPM, 20/MyGdxGame.PPM));
+        fdef.shape = linea;
+        if(Hud.worldLife < 1) {
+            sakuraIsDead = true;
+            MyGdxGame.manager.get("audio/music/musicaJuego.mp3", Music.class).stop();
+            Filter filter = new Filter();
+            filter.maskBits = 0;
+            for(Fixture fix : b2body.getFixtureList()){
+                fix.setFilterData(filter);
+            }
+            b2body.applyLinearImpulse(new Vector2(0, 4f), b2body.getWorldCenter(), true);
+            return true;
+        }
+        return false;
     }
 
     public float getStateTimer(){

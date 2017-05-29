@@ -4,9 +4,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -31,9 +34,11 @@ import com.sakuraxx.game.Tools.WorldContactListener;
 public class Juego extends Ventana implements Screen{
 
     private TextureAtlas atlas;
+    private ShapeRenderer shapeRenderer;
 
     private MyGdxGame game;
     private World mundo;
+    private GameOver gameOver;
 
     private Box2DDebugRenderer box2DD; // va de la mano con el player
 
@@ -48,6 +53,8 @@ public class Juego extends Ventana implements Screen{
 
     private Sakura player;
     private static Music music;
+    private PolygonShape shape;
+    private FixtureDef fdef;
 
     /**
      * En el constructor de Juego se inicializan todas las variables de la clase
@@ -57,6 +64,7 @@ public class Juego extends Ventana implements Screen{
      */
     public Juego(MyGdxGame game) {
         super(game);
+        gameOver = new GameOver(game);
 
 
         atlas = new TextureAtlas("saku.pack");
@@ -179,18 +187,14 @@ public class Juego extends Ventana implements Screen{
 
         box2DD.render(mundo, gamecam.combined);
 
+
         super.game.batch.setProjectionMatrix(gamecam.combined);
         super.game.batch.begin();
         player.draw(super.game.batch);
         super.game.batch.end();
+
         //super.game.batch.setProjectionMatrix(hud.escenario.getCamera().combined);
         hud.escenario.draw();
-
-        if(gameOver()){
-            game.setScreen(game.menu);
-            dispose();
-        }
-
 
     }
 
@@ -205,10 +209,17 @@ public class Juego extends Ventana implements Screen{
 
         player.update(deltha);
         hud.update(deltha);
-        gamecam.position.x = player.b2body.getPosition().x;
+        if(player.currentState != Sakura.State.DEAD)
+            gamecam.position.x = player.b2body.getPosition().x;
 
-        gamecam.update();
         renderer.setView(gamecam);
+        gamecam.update();
+        if(player.isDie()){
+            super.game.setScreen(super.game.GameOver);
+            Hud.worldLife = 3;
+            player.isLife();
+
+        }
     }
 
     /**
@@ -216,12 +227,21 @@ public class Juego extends Ventana implements Screen{
      * @param deltha el tiempo por frame
      */
     private void handleInput(float deltha) {
-        if ( Gdx.input.isKeyJustPressed(Input.Keys.W)|| Gdx.input.isKeyJustPressed(Input.Keys.UP))
-            player.b2body.applyLinearImpulse(new Vector2(0,4f), player.b2body.getWorldCenter(), true );
-        else if ( Gdx.input.isKeyPressed(Input.Keys.D)||Gdx.input.isKeyPressed(Input.Keys.RIGHT) && player.b2body.getLinearVelocity().x <= 2)
-            player.b2body.applyLinearImpulse(new Vector2(0.1f, 0), player.b2body.getWorldCenter(), true);
-        else if ( Gdx.input.isKeyPressed(Input.Keys.A)||Gdx.input.isKeyPressed(Input.Keys.LEFT) && player.b2body.getLinearVelocity().x >= -2)
-            player.b2body.applyLinearImpulse(new Vector2(-0.1f, 0), player.b2body.getWorldCenter(), true);
+        if(player.currentState != Sakura.State.DEAD){ // solo hace lo siguiente si no esta muerto
+            // Se mueve hacia arriba con W y Flecha a la arriba
+            if ( Gdx.input.isKeyJustPressed(Input.Keys.W)|| Gdx.input.isKeyJustPressed(Input.Keys.UP))
+                player.b2body.applyLinearImpulse(new Vector2(0,4f), player.b2body.getWorldCenter(), true );
+            // Se mueve hacia la derecha con D o Flecha Derecha
+            else if ( Gdx.input.isKeyPressed(Input.Keys.D)||Gdx.input.isKeyPressed(Input.Keys.RIGHT) && player.b2body.getLinearVelocity().x <= 2)
+                player.b2body.applyLinearImpulse(new Vector2(0.1f, 0), player.b2body.getWorldCenter(), true);
+            // se mueve hacia la izquierda con A o Flecha Izquierda
+            else if ( Gdx.input.isKeyPressed(Input.Keys.A)||Gdx.input.isKeyPressed(Input.Keys.LEFT) && player.b2body.getLinearVelocity().x >= -2)
+                player.b2body.applyLinearImpulse(new Vector2(-0.1f, 0), player.b2body.getWorldCenter(), true);
+        }
+        else{
+
+        }
+
     }
 
 }

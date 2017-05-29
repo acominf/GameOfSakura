@@ -48,8 +48,6 @@ public class GameOver extends Ventana {
 
     @Override
     public void render(float delta){
-        if(Juego.getMusic().isPlaying())
-            Juego.setMusic(false);
         music.play();
         if(Gdx.input.justTouched()){
             game.setScreen(game.menu);

@@ -13,15 +13,17 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.sakuraxx.game.MyGdxGame;
 import com.sakuraxx.game.Sprites.BadCards;
+import com.sakuraxx.game.Sprites.Sakura;
 
 
 /**
  * Created by mendezrodriguez on 25/05/17.
  */
 public class Hud implements Disposable{
+
     public Stage escenario;
     private Viewport viewport;
-    private static Integer worldLife;
+    public static Integer worldLife;
     private static float lifeCount;
     private static Integer score;
 
@@ -62,6 +64,7 @@ public class Hud implements Disposable{
         escenario.addActor(table);
 
     }
+
 
     public void update(float deltha){
         if(BadCards.getTouch()){
