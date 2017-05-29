@@ -23,7 +23,7 @@ import com.sakuraxx.game.Sprites.GoodCards;
 import com.sakuraxx.game.Sprites.Sakura;
 import com.sakuraxx.game.Scenes.Hud;
 import com.sakuraxx.game.Tools.B2WorldCreator;
-import com.sakuraxx.game.WorldContactListener;
+import com.sakuraxx.game.Tools.WorldContactListener;
 
 /**
  * Created by mendezrodriguez on 24/05/17.

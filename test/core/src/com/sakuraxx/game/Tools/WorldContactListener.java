@@ -1,4 +1,4 @@
-package com.sakuraxx.game;
+package com.sakuraxx.game.Tools;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.physics.box2d.*;
@@ -9,6 +9,7 @@ import com.sakuraxx.game.Sprites.InteractiveTileObject;
 
 /**
  * Created by USER-PC on 27/05/2017.
+ * esta clase detecta cuando sakura toca una carta buena o una carta mala
  */
 public class WorldContactListener implements ContactListener {
     @Override
@@ -28,7 +29,6 @@ public class WorldContactListener implements ContactListener {
             }
         }
     }
-    //InteractiveTileObject.class.isAssignableFrom(object.getUserData().getClass())
 
     @Override
     public void endContact(Contact contact) {
