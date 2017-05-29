@@ -21,7 +21,7 @@ public class GameOver extends Ventana {
     private Viewport viewport;
     private Stage stage;
     public static Music music;
-    public GameOver(MyGdxGame game) {
+    public GameOver(final MyGdxGame game) {
         super(game);
         viewport = new FitViewport(MyGdxGame.V_WIDTH, MyGdxGame.V_HEIGHT, new OrthographicCamera());
         stage = new Stage(viewport, ((MyGdxGame) game).batch);
@@ -33,7 +33,7 @@ public class GameOver extends Ventana {
         table.setFillParent(true);
 
         Label GameOverLabel = new Label("GAME OVER", font);
-        Label playAgainLabel = new Label("Volver al menu", font);
+        Label playAgainLabel = new Label("Click to play again", font);
 
         table.add(GameOverLabel).expandX();
         table.row();
@@ -43,6 +43,7 @@ public class GameOver extends Ventana {
         music.stop();
 
 
+
         stage.addActor(table);
     }
 
@@ -50,7 +51,7 @@ public class GameOver extends Ventana {
     public void render(float delta){
         music.play();
         if(Gdx.input.justTouched()){
-            game.setScreen(game.menu);
+            game.setScreen(new Juego(game));
             dispose();
         }
         Gdx.gl.glClearColor(0,0,0,1);
