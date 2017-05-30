@@ -61,6 +61,20 @@ El autor(es) del proyecto son:
 ### Semestre
 - 2016-2017/II
 
+### Video
+[Game of Sakura CC](https://youtu.be/tTJ7pz-Du6M)
+
+## Imagenes
+
+![Inicio](/imagenes/juego ss1.jpg)
+![Inicio](/imagenes/juego ss2.jpg)
+![Inicio](/imagenes/juego ss3.jpg)
+![Inicio](/imagenes/juegoss4.jpg)
+![Inicio](/imagenes/juego ss5.jpg)
+![Inicio](/imagenes/juego ss6.jpg)
+![Inicio](/imagenes/juego ss7.jpg)
+
+
 ### Markdown
 El contenido de esta página está escrito en un lenguaje de marcado sencillo llamado *Markdown*. Para más detalles consulta la página de [Markdown para GitHub](https://guides.github.com/features/mastering-markdown/).
 
