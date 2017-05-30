@@ -43,6 +43,11 @@ Seran todas las cartas Clow de color rosa que atrape.
 * Inicializar las Ventanas
 * Cargar la musica
 
+### Personajes
+![sakura](https://raw.githubusercontent.com/acominf/GameOfSakura/master/imagenes/standing.png)
+![CartaRosa](https://raw.githubusercontent.com/acominf/GameOfSakura/master/imagenes/flower16.png)
+![CartaAmarilla](https://raw.githubusercontent.com/acominf/GameOfSakura/master/imagenes/cartaMala.png)
+
 
 ### Diagrama de clases
 
