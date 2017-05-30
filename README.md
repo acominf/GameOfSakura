@@ -46,7 +46,7 @@ Seran todas las cartas Clow de color rosa que atrape.
 
 ### Diagrama de clases
 
-![Diagrama de clases](https://raw.githubusercontent.com/acominf/GameOfSakura/master/imagenes/Game%20of%20Sakura%20Card%20Captor-1.jpg)
+![Diagrama de clases](https://raw.githubusercontent.com/acominf/GameOfSakura/master/imagenes/Diagrama.jpg)
 
 ### Autor(es)
 El autor(es) del proyecto son:
