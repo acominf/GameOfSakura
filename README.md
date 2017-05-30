@@ -45,9 +45,6 @@ Seran todas las cartas Clow de color rosa que atrape.
 
 ### Personajes
 ![sakura](https://raw.githubusercontent.com/acominf/GameOfSakura/master/imagenes/standing.png)
-![CartaRosa](https://raw.githubusercontent.com/acominf/GameOfSakura/master/test/core/assets/Salto.jpg)
-![CartaAmarilla](https://raw.githubusercontent.com/acominf/GameOfSakura/master/core/assets/the windy.jpg)
-
 
 ### Diagrama de clases
 
