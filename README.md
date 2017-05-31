@@ -54,6 +54,10 @@ Seran todas las cartas Clow de color rosa que atrape.
 
 ![CartaAmarilla](https://raw.githubusercontent.com/acominf/GameOfSakura/master/imagenes/the_windy.jpg)
  * Cartas amarillas: Estas cartas te quitaran una vida sin las atrapas.
+ 
+### Mapa de juego 
+![Mapa](https://raw.githubusercontent.com/acominf/GameOfSakura/master/test/core/assets/guapoFondoIMG.bmp)
+ * Mapa donde se desarrolla el juego 
 
 ### Diagrama de clases
 
