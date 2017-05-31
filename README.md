@@ -68,6 +68,7 @@ El autor(es) del proyecto son:
 - 2016-2017/II
 
 ### Video
+<iframe width="560" height="315" src="https://www.youtube.com/embed/6BRQklgd_hY" frameborder="0" allowfullscreen></iframe>
 [Game of Sakura CC](https://youtu.be/tTJ7pz-Du6M)
 
 ## Imagenes
