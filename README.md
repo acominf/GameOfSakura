@@ -45,11 +45,14 @@ Seran todas las cartas Clow de color rosa que atrape.
 
 ### Personajes
 ![sakura](https://raw.githubusercontent.com/acominf/GameOfSakura/master/imagenes/standing.png)
-![cartaRosa](https://raw.githubusercontent.com/acominf/GameOfSakura/master/imagenes/Salto.jpg)
-![CartaAmarilla](https://raw.githubusercontent.com/acominf/GameOfSakura/master/imagenes/the_windy.jpg)
-
  * Sakura: Ella puede saltar y caminar por las plataformas.
+
+
+![cartaRosa](https://raw.githubusercontent.com/acominf/GameOfSakura/master/imagenes/Salto.jpg)
  * Cartas Rosas: Estas cartas te daran 100 puntos si las atrapas.
+
+
+![CartaAmarilla](https://raw.githubusercontent.com/acominf/GameOfSakura/master/imagenes/the_windy.jpg)
  * Cartas amarillas: Estas cartas te quitaran una vida sin las atrapas.
 
 ### Diagrama de clases
