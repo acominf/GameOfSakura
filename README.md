@@ -82,7 +82,7 @@ El autor(es) del proyecto son:
 ![Inicio](/imagenes/juego-vida.jpg)
 ![Inicio](/imagenes/juego-vida2.jpg)
 ![Inicio](/imagenes/juegoss7.jpg)
-![Inicio](/imagenes/juego meta1.jpg)
+![Inicio](/imagenes/juego_meta1.jpg)
 ![Inicio](/imagenes/juegometa.jpg)
 ![Inicio](/imagenes/juegoganador.jpg)
 
