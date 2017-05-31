@@ -86,14 +86,11 @@ El autor(es) del proyecto son:
 ![Inicio](/imagenes/juegoss2.jpg)
 ![Inicio](/imagenes/juegoss3.jpg)
 ![Inicio](/imagenes/Ayuda.jpg)
-![Inicio](/imagenes/juegoss4.jpg)
 ![Inicio](/imagenes/juegoss5.jpg)
-![Inicio](/imagenes/juegoss6.jpg)
+
 ![Inicio](/imagenes/juego-vida.jpg)
 ![Inicio](/imagenes/juego-vida2.jpg)
-![Inicio](/imagenes/juegoss7.jpg)
 ![Inicio](/imagenes/juego_meta1.jpg)
-![Inicio](/imagenes/juegometa.jpg)
 ![Inicio](/imagenes/juegoganador.jpg)
 
 ### Markdown
