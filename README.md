@@ -89,9 +89,7 @@ El autor(es) del proyecto son:
 ![Inicio](/imagenes/juegoss5.jpg)
 
 ![Inicio](/imagenes/juego-vida.jpg)
-![Inicio](/imagenes/juego-vida2.jpg)
 ![Inicio](/imagenes/juego_meta1.jpg)
-![Inicio](/imagenes/juegoganador.jpg)
 
 ### Markdown
 El contenido de esta página está escrito en un lenguaje de marcado sencillo llamado *Markdown*. Para más detalles consulta la página de [Markdown para GitHub](https://guides.github.com/features/mastering-markdown/).
