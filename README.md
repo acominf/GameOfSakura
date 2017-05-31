@@ -75,11 +75,16 @@ El autor(es) del proyecto son:
 ![Inicio](/imagenes/juegoss1.jpg)
 ![Inicio](/imagenes/juegoss2.jpg)
 ![Inicio](/imagenes/juegoss3.jpg)
+![Inicio](/imagenes/Ayuda.jpg)
 ![Inicio](/imagenes/juegoss4.jpg)
 ![Inicio](/imagenes/juegoss5.jpg)
 ![Inicio](/imagenes/juegoss6.jpg)
+![Inicio](/imagenes/juego-vida.jpg)
+![Inicio](/imagenes/juego-vida2.jpg)
 ![Inicio](/imagenes/juegoss7.jpg)
-
+![Inicio](/imagenes/juego meta1.jpg)
+![Inicio](/imagenes/juegometa.jpg)
+![Inicio](/imagenes/juegoganador.jpg)
 
 ### Markdown
 El contenido de esta página está escrito en un lenguaje de marcado sencillo llamado *Markdown*. Para más detalles consulta la página de [Markdown para GitHub](https://guides.github.com/features/mastering-markdown/).
