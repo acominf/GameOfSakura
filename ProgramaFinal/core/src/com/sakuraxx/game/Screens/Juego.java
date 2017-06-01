@@ -66,7 +66,7 @@ public class Juego extends Ventana implements Screen{
         atlas = new TextureAtlas("saku.pack");
         gamecam = new OrthographicCamera();
         gamePort = new FitViewport( MyGdxGame.V_WIDTH/MyGdxGame.PPM, MyGdxGame.V_HEIGHT/MyGdxGame.PPM, gamecam);
-        hud = new Hud(super.game.batch);
+        hud = new Hud(super.game.getBatch());
 
         mapLoader = new TmxMapLoader();
         map = mapLoader.load("guapoFondo .tmx");
@@ -100,7 +100,7 @@ public class Juego extends Ventana implements Screen{
             new LimiteAbajo(mundo, map, rect);
         }
 
-        music = MyGdxGame.manager.get("audio/music/musicaJuego.mp3", Music.class);
+        music = MyGdxGame.getManager().get("audio/music/musicaJuego.mp3", Music.class);
         music.setLooping(true);
         music.stop();
         //music.play();
@@ -179,7 +179,7 @@ public class Juego extends Ventana implements Screen{
     @Override
     public void render(float delta) {
         //super.render(delta);
-        Menu.music.pause();
+        Menu.getMusic().pause();
         Juego.music.play();
         music.setVolume(.8f);
         update(delta);
@@ -192,13 +192,13 @@ public class Juego extends Ventana implements Screen{
         box2DD.render(mundo, gamecam.combined);
 
 
-        super.game.batch.setProjectionMatrix(gamecam.combined);
-        super.game.batch.begin();
-        player.draw(super.game.batch);
-        super.game.batch.end();
+        super.game.getBatch().setProjectionMatrix(gamecam.combined);
+        super.game.getBatch().begin();
+        player.draw(super.game.getBatch());
+        super.game.getBatch().end();
 
         //super.game.batch.setProjectionMatrix(hud.escenario.getCamera().combined);
-        hud.escenario.draw();
+        hud.getEscenario().draw();
 
     }
 
@@ -219,11 +219,11 @@ public class Juego extends Ventana implements Screen{
         renderer.setView(gamecam);
         gamecam.update();
         if(player.isDied()){
-            super.game.setScreen(super.game.GameOver);
+            super.game.setScreen(super.game.getGameOver());
             player.isLife();
         }
         if(Meta.getTouch()){
-            super.game.setScreen(super.game.winScreen);
+            super.game.setScreen(super.game.getWinScreen());
         }
     }
 

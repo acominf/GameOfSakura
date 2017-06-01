@@ -22,7 +22,7 @@ public class Menu extends Ventana {
     private Texture texture;
     private SpriteBatch batch;
 
-    public static Music music;
+    private static Music music;
 
     public Menu(final MyGdxGame game) {
         super(game);
@@ -39,7 +39,7 @@ public class Menu extends Ventana {
         btnJugar.addCaptureListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                game.setScreen(game.gameScreen);
+                game.setScreen(game.getGameScreen());
             }
         });
 
@@ -49,7 +49,7 @@ public class Menu extends Ventana {
         btnHistoria.addCaptureListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                game.setScreen(game.history);
+                game.setScreen(game.getHistory());
             }
         });
         TextButton btnItems = new TextButton("Items", skin);
@@ -58,7 +58,7 @@ public class Menu extends Ventana {
         btnItems.addCaptureListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                game.setScreen(game.item);
+                game.setScreen(game.getItem());
             }
         });
 
@@ -69,6 +69,14 @@ public class Menu extends Ventana {
 
     }
 
+    public static Music getMusic() {
+        return music;
+    }
+
+    public static void setMusic(Music music) {
+        Menu.music = music;
+    }
+
     @Override
     public void show(){
         Gdx.input.setInputProcessor(stage);
@@ -76,11 +84,11 @@ public class Menu extends Ventana {
 
     @Override
     public void render(float delta){
-        if(GameOver.music.isPlaying())
-            GameOver.music.stop();
-        music = MyGdxGame.manager.get("audio/music/SakuraCC_Op.mp3", Music.class);
-        music.setLooping(true);
-        music.play();
+        if(GameOver.getMusic().isPlaying())
+            GameOver.getMusic().stop();
+        setMusic(MyGdxGame.getManager().get("audio/music/SakuraCC_Op.mp3", Music.class));
+        getMusic().setLooping(true);
+        getMusic().play();
         Gdx.gl.glClearColor(0.2f, 0.7f, 0.8f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 

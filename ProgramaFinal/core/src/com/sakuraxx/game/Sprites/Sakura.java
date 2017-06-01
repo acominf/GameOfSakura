@@ -143,7 +143,7 @@ public class Sakura extends Sprite {
             return STANDING;
     }
     public boolean isLife(){
-            Hud.worldLife = 3;
+            Hud.setWorldLife(3);
             return sakuraIsDead = false;
     }
 
@@ -163,8 +163,8 @@ public class Sakura extends Sprite {
 
         b2body = world.createBody(bdef);
         shape.setRadius(10/MyGdxGame.PPM);
-        fdef.filter.categoryBits = MyGdxGame.Saku_bit;
-        fdef.filter.maskBits = MyGdxGame.DEFAULT_BIT | MyGdxGame.BADCARD_BIT | MyGdxGame.GOODCARD_BIT;
+        fdef.filter.categoryBits = MyGdxGame.getSaku_bit();
+        fdef.filter.maskBits = (short) (MyGdxGame.getDefaultBit() | MyGdxGame.getBadcardBit() | MyGdxGame.getGoodcardBit());
 
 
         fdef.shape = shape;
@@ -185,9 +185,9 @@ public class Sakura extends Sprite {
         linea.set(new Vector2(0, 0), new Vector2(MyGdxGame.V_WIDTH/MyGdxGame.PPM, 50/MyGdxGame.PPM));
         fdef.shape = linea;
         fdef.isSensor = true;
-        if(Hud.worldLife < 1 || LimiteAbajo.getTouch()) {
+        if(Hud.getWorldLife() < 1 || LimiteAbajo.getTouch()) {
             sakuraIsDead = true;
-            MyGdxGame.manager.get("audio/music/musicaJuego.mp3", Music.class).stop();
+            MyGdxGame.getManager().get("audio/music/musicaJuego.mp3", Music.class).stop();
             Filter filter = new Filter();
             filter.maskBits = 0;
             for(Fixture fix : b2body.getFixtureList()){

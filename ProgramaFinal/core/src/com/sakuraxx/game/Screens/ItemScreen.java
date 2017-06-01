@@ -39,7 +39,7 @@ public class ItemScreen extends Ventana {
         back.addCaptureListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                game.setScreen(game.menu);
+                game.setScreen(game.getMenu());
             }
         });
 

@@ -3,7 +3,6 @@ package com.sakuraxx.game.Sprites;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.World;
@@ -23,7 +22,7 @@ public class GoodCards extends Cards{
     {
         super(world, tiledMap, rectangle);
         fixture.setUserData(this);
-        setCategoryFilter(MyGdxGame.GOODCARD_BIT);
+        setCategoryFilter(MyGdxGame.getGoodcardBit());
         sonido = Gdx.audio.newSound(Gdx.files.internal("audio/sounds/addScore.wav"));
 
         //sonido = MyGdxGame.manager.get("audio/sounds/addScore.wav", Sound.class);
@@ -33,7 +32,7 @@ public class GoodCards extends Cards{
     public void onlinea(){
         Gdx.app.log("GoodCards", "Collision");
 
-        setCategoryFilter(MyGdxGame.DESTROYED_BIT);
+        setCategoryFilter(MyGdxGame.getDestroyedBit());
         getCell().setTile(null);
         getCell1().setTile(null);
         sonido.play();

@@ -13,7 +13,6 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.sakuraxx.game.MyGdxGame;
 import com.sakuraxx.game.Sprites.BadCards;
-import com.sakuraxx.game.Sprites.Sakura;
 
 
 /**
@@ -21,9 +20,9 @@ import com.sakuraxx.game.Sprites.Sakura;
  */
 public class Hud implements Disposable{
 
-    public Stage escenario;
+    private Stage escenario;
     private Viewport viewport;
-    public static Integer worldLife;
+    private static Integer worldLife;
     private static float lifeCount;
     private static Integer score;
 
@@ -35,18 +34,18 @@ public class Hud implements Disposable{
     private Label sakurLabel;   // wo a terminar cambiandole el nombre a esto.. alguien recuerdeme !!!
 
     public Hud(SpriteBatch batch){
-        worldLife = 3;
+        setWorldLife(3);
         lifeCount = 0;
         score = 0;
 
         viewport = new FitViewport(MyGdxGame.V_HEIGHT, MyGdxGame.V_HEIGHT, new OrthographicCamera());
-        escenario = new Stage(viewport, batch);
+        setEscenario(new Stage(viewport, batch));
 
         Table  table = new Table();
         table.top();
         table.setFillParent(true);
 
-        countDownLabel = new Label(String.format("%01d", worldLife), new LabelStyle(new BitmapFont(), Color.WHITE));
+        countDownLabel = new Label(String.format("%01d", getWorldLife()), new LabelStyle(new BitmapFont(), Color.WHITE));
         scoreLabel = new Label(String.format("%06d", score), new LabelStyle(new BitmapFont(), Color.WHITE));
         lifeLabel = new Label("VIDAS", new LabelStyle(new BitmapFont(), Color.WHITE));
         levelLabel = new Label("1-1", new LabelStyle(new BitmapFont(), Color.WHITE));
@@ -61,8 +60,16 @@ public class Hud implements Disposable{
         table.add(levelLabel).expandX();
         table.add(countDownLabel).expandX();
 
-        escenario.addActor(table);
+        getEscenario().addActor(table);
 
+    }
+
+    public static Integer getWorldLife() {
+        return worldLife;
+    }
+
+    public static void setWorldLife(Integer worldLife) {
+        Hud.worldLife = worldLife;
     }
 
 
@@ -74,10 +81,10 @@ public class Hud implements Disposable{
     }
 
     public static void lessWorldLife() { // esta tambien se agrega en donde imprimimos lo de colision pero aparte en donde se cae la player
-        if(worldLife >= 1 ) {
-            System.out.println(worldLife);
-            worldLife -= 1;
-            countDownLabel.setText(String.format("%01d", worldLife));
+        if(getWorldLife() >= 1 ) {
+            System.out.println(getWorldLife());
+            setWorldLife(getWorldLife() - 1);
+            countDownLabel.setText(String.format("%01d", getWorldLife()));
         }
     }
     public static void addScore(int value){ // se debe añadir en donde este el hit de cards (donde imprimimos collision)
@@ -87,6 +94,14 @@ public class Hud implements Disposable{
 
     @Override
     public void dispose() {
-        escenario.dispose();
+        getEscenario().dispose();
+    }
+
+    public Stage getEscenario() {
+        return escenario;
+    }
+
+    public void setEscenario(Stage escenario) {
+        this.escenario = escenario;
     }
 }
