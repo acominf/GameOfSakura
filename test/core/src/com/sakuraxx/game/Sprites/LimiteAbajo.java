@@ -17,7 +17,6 @@ public class LimiteAbajo extends InteractiveTileObject{
         super(w, map, b);
         fixture.setUserData(this);
         touch = false;
-        //setCategoryFilter(MyGdxGame.LIMITE_DOWN_BIT);
         pierde = Gdx.audio.newSound(Gdx.files.internal("audio/sounds/LessLife.wav"));
     }
 

@@ -119,7 +119,7 @@ public class Juego extends Ventana implements Screen{
     }
 
     public boolean gameOver(){
-        if(player.currentState == Sakura.State.DEAD && player.getStateTimer() > 3){
+        if(player.getCurrentState() == Sakura.State.DEAD && player.getStateTimer() > 3){
             return true;
         }
         return false;
@@ -213,8 +213,8 @@ public class Juego extends Ventana implements Screen{
 
         player.update(deltha);
         hud.update(deltha);
-        if(player.currentState != Sakura.State.DEAD)
-            gamecam.position.x = player.b2body.getPosition().x;
+        if(player.getCurrentState()!= Sakura.State.DEAD)
+            gamecam.position.x = player.getB2body().getPosition().x;
 
         renderer.setView(gamecam);
         gamecam.update();
@@ -232,19 +232,16 @@ public class Juego extends Ventana implements Screen{
      * @param deltha el tiempo por frame
      */
     private void handleInput(float deltha) {
-        if(player.currentState != Sakura.State.DEAD){ // solo hace lo siguiente si no esta muerto
+        if(player.getCurrentState() != Sakura.State.DEAD){ // solo hace lo siguiente si no esta muerto
             // Se mueve hacia arriba con W y Flecha a la arriba
             if ( Gdx.input.isKeyJustPressed(Input.Keys.SPACE)|| Gdx.input.isKeyJustPressed(Input.Keys.UP))
-                player.b2body.applyLinearImpulse(new Vector2(0,4f), player.b2body.getWorldCenter(), true );
+                player.getB2body().applyLinearImpulse(new Vector2(0,4f), player.getB2body().getWorldCenter(), true );
             // Se mueve hacia la derecha con D o Flecha Derecha
-            else if ( Gdx.input.isKeyPressed(Input.Keys.D)||Gdx.input.isKeyPressed(Input.Keys.RIGHT) && player.b2body.getLinearVelocity().x <= 2)
-                player.b2body.applyLinearImpulse(new Vector2(0.1f, 0), player.b2body.getWorldCenter(), true);
+            else if ( Gdx.input.isKeyPressed(Input.Keys.D)||Gdx.input.isKeyPressed(Input.Keys.RIGHT) && player.getB2body().getLinearVelocity().x <= 2)
+                player.getB2body().applyLinearImpulse(new Vector2(0.1f,0), player.getB2body().getWorldCenter(), true );
             // se mueve hacia la izquierda con A o Flecha Izquierda
-            else if ( Gdx.input.isKeyPressed(Input.Keys.A)||Gdx.input.isKeyPressed(Input.Keys.LEFT) && player.b2body.getLinearVelocity().x >= -2)
-                player.b2body.applyLinearImpulse(new Vector2(-0.1f, 0), player.b2body.getWorldCenter(), true);
-        }
-        else{
-
+            else if ( Gdx.input.isKeyPressed(Input.Keys.A)||Gdx.input.isKeyPressed(Input.Keys.LEFT) && player.getB2body().getLinearVelocity().x >= -2)
+                player.getB2body().applyLinearImpulse(new Vector2(-0.1f,0f), player.getB2body().getWorldCenter(), true );
         }
 
     }

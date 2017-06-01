@@ -20,10 +20,10 @@ import static com.sakuraxx.game.Sprites.Sakura.State.STANDING;
 public class Sakura extends Sprite {
 
     public enum State{ FALLING, JUMPING, STANDING, RUNNING, DEAD};
-    public State currentState;
-    public State previusState;
-    public World world;
-    public Body b2body;
+    private  State currentState;
+    private State previusState;
+    private World world;
+    private Body b2body;
 
     private TextureRegion sakuraStand;
     private Animation sakuraDead;
@@ -33,9 +33,9 @@ public class Sakura extends Sprite {
     private boolean runningRight;
     private float stateTimer;
 
-    BodyDef bdef;
-    FixtureDef fdef ;
-    CircleShape shape;
+    private BodyDef bdef;
+    private FixtureDef fdef ;
+    private CircleShape shape;
     private boolean sakuraIsDead;
 
 
@@ -78,6 +78,14 @@ public class Sakura extends Sprite {
         setRegion(sakuraStand);
 
 
+    }
+
+    public State getCurrentState() {
+        return currentState;
+    }
+
+    public Body getB2body() {
+        return b2body;
     }
 
     /**

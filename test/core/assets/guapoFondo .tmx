@@ -17,7 +17,7 @@
    eJztmFlSwzAMhs3y0D6VA7BzDtZnIFwCuEvhndLzsJ2jwD1wZ+oZVSPFkpds+JvRNE0d13b0W39iTKGr7O+0PYJCoUBxLNDmQdFvodAoh0LNnQRqc7doulDIxlECfS33gPuRMQ82Hkfrv+0V/RYGSlO1SeJ9NWCtSveAoT8fD81rSL3Zf0VTm2JyP9T7OrjaSlGXw6mfj3PmV4gWufvZVx2k8GZdosn99Wuy/r0v74ZgDt8J9C6F8hBUfm0H9EOR0vcPTQcapjaPn1bxPPG3zwl1TzdsbILYSvA/WLsauL1+YePbxg9zXY55OFLo2OchnG4rcI6ac6wXWRh+DQv949rGDYhb8Jur11TdfrMafbfxYeMT6JXS7oU9d2njSqBrvNf76pHjxcYMxKvwutOxMWc2zsf+tlDHeJ8JfT7Auq24hhH8Mue5PZFrzxHq6+p8Oe4Trm/s+xDJ9bgepK4JWrj6VKdfV6+lXkxadzV6pvI5Vw3RaBnvM5rnA7gnYd1y+vX5DwqtDn3tuTGEevU6X477hOsr8SB16yW5HusCa6NpOJ268zPT7hhxnaX8JIU2R9uC0iw8TlF/QzTeZH+5yDFOTr9UXe5L5PQPLm+b8JMxaO+fWzNKs/BYO9+uaCs2n6mckvQZmovS8WLtOv1Suu5L5KzN89Vnhb7PibZtor1/bs3gPKjjrs7XR2w+Uzkl6TM0F/F7Ek0s36n8AWAnfd0=
   </data>
  </layer>
- <objectgroup name="piso">
+ <objectgroup name="piso" visible="0">
   <object id="6" x="2.32901" y="177.005" width="629.33" height="30.7029"/>
   <object id="9" x="624.08" y="177.067" width="142.188" height="30.9966"/>
   <object id="17" x="1121.78" y="162.283" width="12.9448" height="44.2017"/>
@@ -37,7 +37,7 @@
   <object id="75" x="3585.67" y="177.444" width="159.551" height="29.3255"/>
   <object id="76" x="3744.72" y="129.231" width="93.9411" height="78.0357"/>
  </objectgroup>
- <objectgroup name="plataformas">
+ <objectgroup name="plataformas" visible="0">
   <object id="10" x="801.629" y="129.764" width="59.3565" height="11.6819"/>
   <object id="11" x="881.192" y="145.55" width="13.5762" height="13.892"/>
   <object id="12" x="897.294" y="129.132" width="13.5762" height="14.8391"/>
@@ -72,7 +72,7 @@
   <object id="73" x="481.214" y="145.871" width="76.4345" height="29.0666"/>
   <object id="74" x="577.565" y="114.652" width="76.9728" height="60.2864"/>
  </objectgroup>
- <objectgroup name="CartasBuenas">
+ <objectgroup name="CartasBuenas" visible="0">
   <object id="78" x="497.043" y="97.4203" width="14.4142" height="29.3255"/>
   <object id="79" x="688.404" y="129.231" width="14.9113" height="30.3196"/>
   <object id="80" x="720.443" y="128.827" width="14.8375" height="31.5591"/>
@@ -95,7 +95,7 @@
   <object id="106" x="3344.32" y="128.356" width="15.3085" height="31.7946"/>
   <object id="107" x="3599.62" y="128.827" width="15.7796" height="30.8526"/>
  </objectgroup>
- <objectgroup name="CartasMalas">
+ <objectgroup name="CartasMalas" visible="0">
   <object id="83" x="1152.14" y="112.812" width="15.7796" height="30.8526"/>
   <object id="86" x="1344.32" y="32.5012" width="16.0151" height="30.8526"/>
   <object id="93" x="1616.34" y="48.5163" width="16.2506" height="31.7946"/>
@@ -106,10 +106,10 @@
   <object id="104" x="3119.88" y="128.592" width="16.0151" height="31.0881"/>
   <object id="108" x="3503.77" y="64.5313" width="16.2506" height="32.0301"/>
  </objectgroup>
- <objectgroup name="Meta">
+ <objectgroup name="Meta" visible="0">
   <object id="110" x="3776.49" y="97.9608" width="62.9748" height="12.495"/>
  </objectgroup>
- <objectgroup name="LimiteAbajo">
+ <objectgroup name="LimiteAbajo" visible="0">
   <object id="114" x="575.377" y="200.583" width="3106.44" height="24.7525"/>
   <object id="115" x="2617.57" y="1076.73"/>
  </objectgroup>

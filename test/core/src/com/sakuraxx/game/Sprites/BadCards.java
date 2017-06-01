@@ -12,9 +12,7 @@ import com.sakuraxx.game.MyGdxGame;
  * Created by mendezrodriguez on 27/05/17.
  */
 public class BadCards extends Cards{
-    Sound bCard;
-
-    private Sound sonido;
+    private  Sound bCard;
     private static boolean touch;
     public BadCards(World world, TiledMap tiledMap, Rectangle rectangle){
         super(world, tiledMap, rectangle);
@@ -33,7 +31,6 @@ public class BadCards extends Cards{
         getCell().setTile(null);
         getCell1().setTile(null);
         bCard.play();
-        //sonido.play();
     }
 
     public static void setTouch(boolean touch) {
